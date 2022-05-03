@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head class="at-element-marker">
+  <title>從Azure Marketplace建立連接器 | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="從Azure Marketplace建立連接器 | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-azure-mktp.html" />
+	<meta property="og:description" content="最好直接從 Cloud Manager 建立 Connector 、但您也可以從 Azure Marketplace （如有需要）啟動 Connector 。建立並設定 Connector 之後、 Cloud Manager 會在您建立新的工作環境時自動使用。" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="最好直接從 Cloud Manager 建立 Connector 、但您也可以從 Azure Marketplace （如有需要）啟動 Connector 。建立並設定 Connector 之後、 Cloud Manager 會在您建立新的工作環境時自動使用。">
+  <meta name="keywords" content=" install, installation, installing, marketplace, azure, deploy, virtual machine, permissions, deploy connector in azure, install connector in azure"><!-- Icons -->
+  <link rel="icon" href="/zh-tw/cloud-manager-setup-admin/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/zh-tw/cloud-manager-setup-admin/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/cloud-manager-setup-admin/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/zh-tw/cloud-manager-setup-admin/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/cloud-manager-setup-admin/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/cloud-manager-setup-admin/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/zh-tw/cloud-manager-setup-admin/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/zh-tw/cloud-manager-setup-admin/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/zh-tw/cloud-manager-setup-admin/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/zh-tw/cloud-manager-setup-admin/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/zh-tw/cloud-manager-setup-admin/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/zh-tw/cloud-manager-setup-admin/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/zh-tw/cloud-manager-setup-admin/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-tw/cloud-manager-setup-admin/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/cloud-manager-setup-admin/js/na-search.js'></script><script src='/zh-tw/cloud-manager-setup-admin/js/na-pagenav.js'></script><link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/zh-tw/cloud-manager-setup-admin/js/na-utility.js'></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/clouddocs.js'></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/toc.js'></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/custom-dropdown.js'></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/FileSaver.min.js'></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/jszip-utils.min.js'></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/jszip.min.js'></script>
+  <script src='/zh-tw/cloud-manager-setup-admin/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/issues/new?body=Page%3A%20[從Azure Marketplace建立連接器](https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-azure-mktp.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/blob/main/task-launching-azure-mktp.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/cloud-manager-setup-admin/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此頁面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">產品與解決方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支援與訓練</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社群</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">部落格</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客戶成功案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-tw/cloud-manager-setup-admin/search.html"
+          data-type="widget" 
+          data-placeholder="搜尋文件" 
+          data-no-results-found="找不到符合 {query} 的相關結果。" 
+          data-did-you-mean="搜尋 {suggestion}。" 
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？" 
+          data-results-found="找到 {hitCount} 筆結果"  
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">繁體中文</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-launching-azure-mktp.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/cloud-manager-setup-admin/task-launching-azure-mktp.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/cloud-manager-setup-admin/task-launching-azure-mktp.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-setup-admin/task-launching-azure-mktp.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-azure-mktp.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/zh-tw/cloud-manager-setup-admin/pdfs/fullsite-sidebar/設定及管理Cloud_Manager.pdf" >
+          <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>此文件網站（PDF 格式）</a>
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/版本資訊.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            版本資訊
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/開始使用.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            開始使用
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/設定NetApp帳戶.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            設定NetApp帳戶
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/設定連接器.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            設定連接器
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/管理_Cloud_Manager.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            管理 Cloud Manager
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/NetApp客戶.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            NetApp客戶
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/連接器.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            連接器
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/進階部署.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            進階部署
+          </a>
+          
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-tw/cloud-manager-setup-admin/pdfs/pages/task-launching-azure-mktp.pdf" >
+    <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/AWS認證資料.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            AWS認證資料
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/Azure認證.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            Azure認證
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/Google_Cloud認證資料.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            Google Cloud認證資料
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/參考資料.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            參考資料
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/cloud-manager-setup-admin/pdfs/sidebar/知識與支援.pdf" 
+            
+          >
+            <img src="/zh-tw/cloud-manager-setup-admin/images/pdf.png" width="16" height="16"/>
+            知識與支援
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-tw/cloud-manager-setup-admin/images/pdf-zip.png" width="16" height="16"/>
+      <pre>個別 PDF 文件的集合<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-manager-family">
+        所有Cloud Manager文件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/index.html">
+        設定與管理文件
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 版本資訊</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/whats-new.html">
+        新增功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-limitations.html">
+        限制
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 開始使用</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/concept-overview.html">
+        深入瞭解 Cloud Manager
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-checklist-cm.html">
+        入門檢查清單
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-signing-up.html">
+        註冊 Cloud Central
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-logging-in.html">
+        登入 Cloud Manager
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定NetApp帳戶</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/concept-netapp-accounts.html">
+        瞭解NetApp客戶
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-setting-up-netapp-accounts.html">
+        設定工作區和使用者
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定連接器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/concept-connectors.html">
+        深入瞭解連接器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-networking-cloud-manager.html">
+        設定您的網路
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-creating-connectors-aws.html">
+        在 AWS 中建立連接器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-creating-connectors-azure.html">
+        在 Azure 中建立 Connector
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-creating-connectors-gcp.html">
+        在Google Cloud中建立Connector
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-whats-next.html">
+        下一步
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 管理 Cloud Manager</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NetApp客戶</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-managing-netapp-accounts.html">
+        管理您的帳戶
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-monitor-cm-operations.html">
+        監控您帳戶中的作業
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-user-roles.html">
+        使用者角色
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 連接器</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 進階部署</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-launching-aws-mktp.html">
+        從 AWS Marketplace 建立
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-launching-azure-mktp.html">
+        從 Azure Marketplace 建立
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-installing-linux.html">
+        使用網際網路在自己的主機上安裝
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html">
+        在內部安裝、無需網際網路
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-finding-system-id.html">
+        尋找連接器的系統ID
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-managing-connectors.html">
+        管理現有的連接器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-installing-https-cert.html">
+        安裝 HTTPS 憑證
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-configuring-proxy.html">
+        設定 Proxy 設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-connector-default-config.html">
+        預設組態
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> AWS認證資料</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/concept-accounts-aws.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-adding-aws-accounts.html">
+        管理認證與訂閱
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure認證</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/concept-accounts-azure.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-adding-azure-accounts.html">
+        管理認證與訂閱
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Google Cloud認證資料</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/concept-accounts-gcp.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-adding-gcp-accounts.html">
+        管理認證與訂閱
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-adding-nss-accounts.html">
+        NetApp支援網站帳戶
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 參考資料</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
+        Connector的AWS權限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html">
+        連接器的Azure權限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-gcp.html">
+        Connector的Google Cloud權限
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 知識與支援</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-support-registration.html">
+        註冊以取得支援
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-get-help.html">
+        取得協助
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/legal-notices.html">
+        法律聲明
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-tw/cloud-manager-setup-admin/">Set&nbsp;up&nbsp;and&nbsp;administration</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 本繁體中文版使用機器翻譯，譯文僅供參考，若與英文版本牴觸，應以英文版本為準。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">從Azure Marketplace建立連接器</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    
+  
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>最好直接從 Cloud Manager 建立 Connector 、但您也可以從 Azure Marketplace （如有需要）啟動 Connector 。建立並設定 Connector 之後、 Cloud Manager 會在您建立新的工作環境時自動使用。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="在-azure-中建立-connector">在 Azure 中建立 Connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>使用Azure Marketplace中的映像在Azure中部署Connector、然後登入Connector以指定您的NetApp帳戶。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>前往Azure Marketplace的NetApp Connector VM頁面。</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-oncommand-cloud-manager" target="_blank" rel="noopener">"適用於商業區域的Azure Marketplace頁面"</a></p>
+</li>
+<li>
+<p><a href="https://portal.azure.us/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/netapp.netapp-oncommand-cloud-manager/product/%7B%22displayName%22%3A%22NetApp%20Connector%20VM%22%2C%22itemDisplayName%22%3A%22NetApp%20Connector%20VM%22%2C%22id%22%3A%22netapp.netapp-oncommand-cloud-manager%22%2C%22bigId%22%3A%22DZH318Z0BPMZ%22%2C%22offerId%22%3A%22netapp-oncommand-cloud-manager%22%2C%22publisherId%22%3A%22netapp%22%2C%22publisherDisplayName%22%3A%22NetApp%22%2C%22summary%22%3A%22Start%20here%20to%20deploy%20NetApp%20Connector%20in%20case%20it%20is%20not%20possible%20directly%20from%20Cloud%20Manager%22%2C%22longSummary%22%3A%22Start%20here%20to%20deploy%20NetApp%20Connector%20VM%20in%20Azure%20in%20case%20it%20is%20not%20possible%20to%20deploy%20directly%20from%20Cloud%20Manager%22%2C%22description%22%3A%22Some%20Cloud%20Manager%20features%20requires%20a%20connector.%20The%20connector%20enables%20Cloud%20Manager%20to%20manage%20resources%20and%20processes%20within%20your%20public%20and%20hybrid%20cloud%20environment.%5CnFor%20complete%20Cloud%20Manager%20service%20including%20Cloud%20Volumes%20ONTAP%20storage%20services%20and%20Data%20Services%2C%20with%20built%20in%20connector%20installation%2C%20it%20is%20recommended%20to%20subscribe%20the%20following%20SaaS%20listing%3A%5Cn%3Ca%20href%3D%5C%22https%3A%2F%2Fazuremarketplace.microsoft.com%2Fen-us%2Fmarketplace%2Fapps%2Fnetapp.cloud-manager%3Ftab%3DOverview.%5C%22%20target%3D%5C%22_blank%5C%22%3E%20Cloud%20Manager%20-%20Deploy%20%26%20Manage%20Cloud%20Data%20Services%3C%2Fa%3E%5Cn%5Cn%3Ch3%3EHow%20to%20Get%20Started%3C%2Fh3%3E%20%5Cn%3Cul%3E%5Cn%3Cli%3E%3Ca%20href%3D%5C%22https%3A%2F%2Fdocs.netapp.com%2Fus-en%2Foccm%2Fconcept_connectors.html%5C%22%20target%3D%5C%22_blank%5C%22%3E%20Learn%20when%20a%20Connector%20is%20required%3C%2Fa%3E%3C%2Fli%3E%5Cn%3Cli%3E%3Ca%20href%3D%5C%22https%3A%2F%2Fdocs.netapp.com%2Fus-en%2Foccm%2Ftask_launching_azure_mktp.html%5C%22%20target%3D%5C%22_blank%5C%22%3E%20Deploying%20Cloud%20Manager%20from%20the%20Azure%20Marketplace%3C%2Fa%3E%3C%2Fli%3E%5Cn%3C%2Ful%3E%5Cn%3Ch3%3ESupport%3A%3C%2Fh3%3E%5Cn%3Cul%3E%5Cn%3Cli%3E%3Ca%20href%3D%5C%22https%3A%2F%2Fwww.netapp.com%2Fazure%2Fcontact%2F%5C%22%20target%3D%5C%22_blank%5C%22%3E%20Contact%20our%20Cloud%20expert%20team%3C%2Fa%3E%3C%2Fli%3E%5Cn%3C%2Ful%3E%22%2C%22isPrivate%22%3Afalse%2C%22hasPrivateOffer%22%3Afalse%2C%22isMacc%22%3Atrue%2C%22isPreview%22%3Afalse%2C%22isByol%22%3Atrue%2C%22isCSPEnabled%22%3Atrue%2C%22isCSPSelective%22%3Afalse%2C%22isThirdParty%22%3Atrue%2C%22isStopSell%22%3Afalse%2C%22isReseller%22%3Afalse%2C%22hasFreeTrials%22%3Afalse%2C%22marketingMaterial%22%3A%5B%5D%2C%22legalTermsUri%22%3A%22https%3A%2F%2Fquery.prod.cms.rt.microsoft.com%2Fcms%2Fapi%2Fam%2Fbinary%2FRE4ViQd%22%2C%22privacyPolicyUri%22%3A%22https%3A%2F%2Fwww.netapp.com%2Fcompany%2Flegal%2Fprivacy-policy%2F%22%2C%22version%22%3A%228eebc6b6-4d8a-4965-8226-472a0b3e6515%22%2C%22metadata%22%3A%7B%22leadGeneration%22%3A%7B%22productId%22%3Anull%7D%2C%22testDrive%22%3Anull%7D%2C%22categoryIds%22%3A%5B%22storage%22%2C%22data-lifecycle-management%22%2C%22enterprise-hybrid-storage%22%2C%22virtualMachine%22%2C%22virtualMachine-Arm%22%2C%22azureCertified%22%2C%22fromDataMarket%22%2C%22microsoft-badged%22%5D%2C%22screenshotUris%22%3A%5B%22https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.42606.ac063191-8cc9-443d-85d5-a6331e1b4271.eda5eea5-a9aa-4163-a9b9-f3072487b254.149efa4e-6e7c-4032-864f-25ea2d7f2de8%22%5D%2C%22videos%22%3A%5B%5D%2C%22links%22%3A%5B%7B%22id%22%3A%22Cloud%20Manager%22%2C%22displayName%22%3A%22Cloud%20Manager%22%2C%22uri%22%3A%22https%3A%2F%2Fcloud.netapp.com%2Fcloud-manager%22%7D%2C%7B%22id%22%3A%22NetApp%20Support%22%2C%22displayName%22%3A%22NetApp%20Support%22%2C%22uri%22%3A%22https%3A%2F%2Fcloud.netapp.com%2Fcontact-cds%22%7D%5D%2C%22filters%22%3A%5B%5D%2C%22plans%22%3A%5B%7B%22id%22%3A%220001%22%2C%22displayName%22%3A%22OnCommand%20Cloud%20Manager%20(BYOL)%22%2C%22summary%22%3A%22Streamline%20the%20deployment%20and%20management%20of%20Cloud%20Volumes%20ONTAP%22%2C%22description%22%3A%22%3Ch2%3EKey%20Features%3C%2Fh2%3E%3Cul%3E%3Cli%3ESimplifies%20configuration%20and%20deployment%20of%20Cloud%20Volumes%20ONTAP%3C%2Fli%3E%3Cli%3EProvides%20a%20central%20point%20of%20control%20for%20all%20Cloud%20Volumes%20ONTAP%20instances%3C%2Fli%3E%3Cli%3EAutomates%20data%20movement%20between%20on-premise%20environments%20and%20the%20cloud%3C%2Fli%3E%3Cli%3EMakes%20automated%20recommendations%20for%20buying%20new%20storage%20as%20needed%3C%2Fli%3E%3Cli%3EFacilitates%20hybrid%20IT%20environments%20that%20include%20Cloud%20Volumes%20ONTAP%2C%20FAS%20and%20AFF%20storage%20environments%3C%2Fli%3E%3C%2Ful%3E%5Cn%5Cn%3Ch2%3EUsage%20Instructions%3C%2Fh2%3EImportant%3A%20You%20must%20use%20OnCommand%20Cloud%20Manager%20to%20launch%20Cloud%20Volumes%20ONTAP%20environments.%20You%20cannot%20launch%20Cloud%20Volumes%20ONTAP%20directly%20from%20the%20Azure%20portal%2C%20as%20the%20Cloud%20Volumes%20ONTAP%20system%20will%20not%20be%20deployed%20correctly.%20At%20a%20high%20level%2C%20deploying%20OnCommand%20Cloud%20Manager%20and%20Cloud%20Volumes%20ONTAP%20involves%20these%20steps%3A%3Col%3E%3Cli%3EPrepare%20your%20Azure%20environment%3C%2Fli%3E%3Cli%3EEnable%20programmatic%20deployment%20on%20the%20Cloud%20Volumes%20ONTAP%20products%20you%20plan%20to%20use%20from%20the%20Azure%20Marketplace%3C%2Fli%3E%3Cli%3ELaunch%20the%20OnCommand%20Cloud%20Manager%20software%20instance%20in%20Azure%20(use%20HDD%20volumes%20for%20lower%20cost%20instances)%3C%2Fli%3E%3Cli%3EAccess%20OnCommand%20Cloud%20Manager%20by%20entering%20the%20instance%20IP%20address%20in%20a%20web%20browser%3C%2Fli%3E%3Cli%3EComplete%20the%20Setup%20wizard%3C%2Fli%3E%3Cli%3EUse%20OnCommand%20Cloud%20Manager%20to%20launch%20Cloud%20Volumes%20ONTAP%20instances%3C%2Fli%3E%3C%2Fol%3E%5Cn%5Cn%3Ch2%3ESupport%3C%2Fh2%3ESoftware%20support%20is%20included%20with%20this%20offering%20for%20the%20duration%20of%20the%20Cloud%20Volumes%20ONTAP%20subscription%20purchased.%20NetApp%20has%20extensive%20self-support%20options%20including%20knowledge%20base%2C%20documentation%2C%20videos%2C%20and%20community%20forums%20that%20are%20available%2024x7.%20NetApp%20customers%20can%20also%20get%20support%20from%20our%20tech%20support%20team%20via%20chat%2C%20web%20tickets%2C%20or%20phone.%20%20See%20the%20useful%20links%20section%20below%20for%20more.%22%2C%22restrictedAudience%22%3A%7B%7D%2C%22skuId%22%3A%220001%22%2C%22planId%22%3A%22occm-byol%22%2C%22legacyPlanId%22%3A%22netapp.netapp-oncommand-cloud-manageroccm-byol%22%2C%22keywords%22%3A%5B%5D%2C%22type%22%3A%22VirtualMachine%22%2C%22leadGeneration%22%3A%7B%22productId%22%3A%22netapp.netapp-oncommand-cloud-manageroccm-byol%22%7D%2C%22testDrive%22%3Anull%2C%22availabilities%22%3A%5B%5D%2C%22categoryIds%22%3A%5B%5D%2C%22conversionPaths%22%3A%5B%5D%2C%22metadata%22%3A%7B%7D%2C%22operatingSystem%22%3A%7B%22family%22%3A%22Linux%22%2C%22type%22%3A%22Other%20Linux%22%2C%22name%22%3A%22RedHat%207.2%22%7D%2C%22uiDefinitionUri%22%3A%22https%3A%2F%2Fcatalogartifact.azureedge.net%2Fpublicartifacts%2Fnetapp.netapp-oncommand-cloud-manager-d69cbc32-ab9d-42f9-84e1-65b314b291f9-occm-byol%2FUiDefinition.json%22%2C%22artifacts%22%3A%5B%7B%22name%22%3A%22DefaultTemplate%22%2C%22uri%22%3A%22https%3A%2F%2Fcatalogartifact.azureedge.net%2Fpublicartifacts%2Fnetapp.netapp-oncommand-cloud-manager-d69cbc32-ab9d-42f9-84e1-65b314b291f9-occm-byol%2FArtifacts%2FmainTemplate.json%22%2C%22type%22%3A%22Template%22%7D%2C%7B%22name%22%3A%22UiDefinition.json%22%2C%22uri%22%3A%22https%3A%2F%2Fcatalogartifact.azureedge.net%2Fpublicartifacts%2Fnetapp.netapp-oncommand-cloud-manager-d69cbc32-ab9d-42f9-84e1-65b314b291f9-occm-byol%2FUiDefinition.json%22%2C%22type%22%3A%22Custom%22%7D%2C%7B%22name%22%3A%22createuidefinition%22%2C%22uri%22%3A%22https%3A%2F%2Fcatalogartifact.azureedge.net%2Fpublicartifacts%2Fnetapp.netapp-oncommand-cloud-manager-d69cbc32-ab9d-42f9-84e1-65b314b291f9-occm-byol%2FArtifacts%2Fcreateuidefinition.json%22%2C%22type%22%3A%22Custom%22%7D%5D%2C%22isPrivate%22%3Afalse%2C%22isHidden%22%3Afalse%2C%22hasFreeTrials%22%3Afalse%2C%22isByol%22%3Atrue%2C%22isFree%22%3Atrue%2C%22isPayg%22%3Afalse%2C%22isStopSell%22%3Afalse%2C%22cspState%22%3A%22OptIn%22%2C%22isQuantifiable%22%3Afalse%2C%22vmSecuritytype%22%3A%22None%22%2C%22displayRank%22%3A%222147483647%22%2C%22purchaseDurationDiscounts%22%3A%5B%5D%2C%22upns%22%3A%5B%5D%2C%22hasRI%22%3Afalse%2C%22stackType%22%3A%22ARM%22%7D%5D%2C%22selectedPlanId%22%3A%22occm-byol%22%2C%22iconFileUris%22%3A%7B%22small%22%3A%22https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.46149.ac063191-8cc9-443d-85d5-a6331e1b4271.527009cd-0dd1-4010-b0f3-f02eafa09061.e885edff-cdb0-4919-b555-6cb17199c20f%22%2C%22medium%22%3A%22https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.49094.ac063191-8cc9-443d-85d5-a6331e1b4271.527009cd-0dd1-4010-b0f3-f02eafa09061.9139b9f2-b9d6-46ac-b5b3-81db72fdaf0b%22%2C%22wide%22%3A%22https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.6407.ac063191-8cc9-443d-85d5-a6331e1b4271.527009cd-0dd1-4010-b0f3-f02eafa09061.72a070fd-4362-4328-aab1-cda8165125e6%22%2C%22large%22%3A%22https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.30206.ac063191-8cc9-443d-85d5-a6331e1b4271.527009cd-0dd1-4010-b0f3-f02eafa09061.60dd6e7b-7889-4a0c-87ce-100eefe8521f%22%7D%2C%22itemType%22%3A%22Single%22%2C%22hasNoProducts%22%3Afalse%2C%22hasNoPlans%22%3Afalse%2C%22filledHeartIcon%22%3A%7B%22type%22%3A1%2C%22data%22%3A%22%3Csvg%20viewBox%3D'0%200%2016%2015'%20class%3D&#8217;msportalfx-svg-placeholder'%20role%3D&#8217;presentation'%20focusable%3D&#8217;false'%20xmlns%3Asvg%3D&#8217;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D&#8217;http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cg%3E%3Ctitle%3E%3C%2Ftitle%3E%3Cpath%20d%3D&#8217;M14.758%201.242c.276.276.505.578.688.906.188.328.325.669.414%201.024a4.257%204.257%200%200%201-1.103%204.086L8%2014.008l-6.758-6.75a4.269%204.269%200%200%201-.695-.906%204.503%204.503%200%200%201-.414-1.016%204.437%204.437%200%200%201%200-2.164c.094-.354.232-.695.414-1.024A4.302%204.302%200%200%201%202.625.32C3.141.107%203.682%200%204.25%200s1.109.107%201.625.32c.516.214.977.521%201.383.922l.742.75.742-.75A4.292%204.292%200%200%201%2010.125.32C10.641.107%2011.182%200%2011.75%200s1.109.107%201.625.32c.516.214.977.521%201.383.922z'%20class%3D&#8217;msportalfx-svg-c19'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%22%7D%2C%22emptyHeartIcon%22%3A%7B%22type%22%3A1%2C%22data%22%3A%22%3Csvg%20viewBox%3D'0%200%2016%2015'%20class%3D&#8217;msportalfx-svg-placeholder'%20role%3D&#8217;presentation'%20focusable%3D&#8217;false'%20xmlns%3Asvg%3D&#8217;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D&#8217;http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cg%3E%3Ctitle%3E%3C%2Ftitle%3E%3Cpath%20d%3D&#8217;M11.75%200c.588%200%201.14.112%201.656.336.516.224.966.529%201.352.914.385.38.687.83.906%201.352.224.515.336%201.065.336%201.648%200%20.568-.11%201.112-.328%201.633-.214.52-.518.979-.914%201.375L8%2014.008l-6.758-6.75A4.256%204.256%200%200%201%20.32%205.883%204.263%204.263%200%200%201%200%204.25a4.177%204.177%200%200%201%201.242-3c.386-.385.836-.69%201.352-.914A4.113%204.113%200%200%201%204.25%200c.432%200%20.818.05%201.156.148.339.1.651.237.938.415.291.171.567.38.828.625.266.244.542.513.828.804.286-.291.56-.56.82-.805.266-.244.542-.453.828-.625.292-.177.607-.315.946-.414A4.126%204.126%200%200%201%2011.75%200zm2.297%206.547c.307-.307.541-.659.703-1.055.162-.396.242-.81.242-1.242a3.19%203.19%200%200%200-.25-1.266%203.048%203.048%200%200%200-.695-1.023%203.095%203.095%200%200%200-1.031-.68%203.192%203.192%200%200%200-1.266-.25c-.438%200-.825.07-1.164.211a3.816%203.816%200%200%200-.938.54%207.001%207.001%200%200%200-.828.765c-.26.281-.534.568-.82.86a31.352%2031.352%200%200%201-.82-.852%207.247%207.247%200%200%200-.836-.774%204.017%204.017%200%200%200-.946-.562A2.875%202.875%200%200%200%204.25%201c-.448%200-.87.086-1.266.258A3.222%203.222%200%200%200%201%204.25c0%20.432.08.846.242%201.242.167.396.404.748.711%201.055L8%2012.594l6.047-6.047z'%20class%3D&#8217;msportalfx-svg-c19%20msportalfx-svg-c19'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%22%7D%2C%22deleteIcon%22%3A%7B%22type%22%3A17%2C%22options%22%3Anull%7D%2C%22searchId%22%3A%221650995185079_marketplaceOffersBladeSearchContext%22%2C%22searchTelemetryId%22%3A%22a273c689-018c-448d-99e6-4b5e6204d289%22%2C%22searchIndex%22%3A0%2C%22searchScore%22%3A490.40115%2C%22privateBadgeText%22%3Anull%2C%22curationCategoryDisplayName%22%3A%22Compute%22%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22createBladeType%22%3A1%2C%22offerType%22%3A%22VirtualMachine%22%2C%22useEnterpriseContract%22%3Afalse%2C%22hasStandardContractAmendments%22%3Afalse%2C%22standardContractAmendmentsRevisionId%22%3A%2200000000-0000-0000-0000-000000000000%22%2C%22cspLegalTermsUri%22%3A%22https%3A%2F%2Fquery.prod.cms.rt.microsoft.com%2Fcms%2Fapi%2Fam%2Fbinary%2FRE4ViQd%22%2C%22supportUri%22%3Anull%2C%22isMicrosoftProduct%22%3Atrue%2C%22productOwnershipSellingMotion%22%3A%223PPAgency%22%2C%22galleryItemAccess%22%3A0%2C%22privateSubscriptions%22%3A%5B%5D%2C%22isTenantPrivate%22%3Afalse%2C%22hasRIPlans%22%3Afalse%2C%22isCoreVm%22%3Afalse%7D/selectionMode//resourceGroupId//resourceGroupLocation//dontDiscardJourney//selectedMenuId/home/launchingContext/%7B%22galleryItemId%22%3A%22netapp.netapp-oncommand-cloud-manageroccm-byol%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%7D/searchTelemetryId/a273c689-018c-448d-99e6-4b5e6204d289" target="_blank" rel="noopener">"Azure政府區域的Azure Marketplace頁面"</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>按一下「 * 立即取得 * 」、然後按一下「 * 繼續 * 」。</p>
+</li>
+<li>
+<p>從 Azure 入口網站按一下 * 「 Create 」（建立） * 、然後依照步驟設定虛擬機器。</p>
+<div class="paragraph">
+<p>設定 VM 時請注意下列事項：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Manager 可搭配 HDD 或 SSD 磁碟以最佳方式執行。</p>
+</li>
+<li>
+<p>選擇符合 CPU 和 RAM 需求的 VM 大小。我們建議使用 DS3 v2 。</p>
+<div class="paragraph">
+<p><a href="task-installing-linux.html">"檢閱 VM 需求"</a>。</p>
+</div>
+</li>
+<li>
+<p>對於網路安全性群組、 Connector 需要使用 SSH 、 HTTP 和 HTTPS 的傳入連線。</p>
+<div class="paragraph">
+<p><a href="reference-networking-cloud-manager.html#rules-for-the-connector-in-azure">"深入瞭解 Connector 的安全性群組規則"</a>。</p>
+</div>
+</li>
+<li>
+<p>在「 * 管理 * 」下、選取「 * 開啟 * 」、為連接器啟用 * 系統指派的託管身分識別 * 。</p>
+<div class="paragraph">
+<p>此設定非常重要、因為託管身分識別可讓 Connector 虛擬機器在 Azure Active Directory 中識別自己、而無需提供任何認證。 <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">"深入瞭解 Azure 資源的託管身分識別"</a>。</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>在「 * 檢閱 + 建立 * 」頁面上、檢閱您的選擇、然後按一下「 * 建立 * 」開始部署。</p>
+<div class="paragraph">
+<p>Azure 以指定的設定部署虛擬機器。虛擬機器和 Connector 軟體應在大約五分鐘內執行。</p>
+</div>
+</li>
+<li>
+<p>從連線至 Connector 虛擬機器的主機開啟網頁瀏覽器、然後輸入下列 URL ：</p>
+<div class="paragraph">
+<p>http://<em>ipaddress</em>:80[]</p>
+</div>
+</li>
+<li>
+<p>登入後、設定 Connector ：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>指定要與Connector建立關聯的NetApp帳戶。</p>
+<div class="paragraph">
+<p><a href="concept-netapp-accounts.html">"瞭解NetApp客戶"</a>。</p>
+</div>
+</li>
+<li>
+<p>輸入系統名稱。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_set_up_cloud_manager.gif" alt="螢幕快照顯示「設定Cloud Manager」畫面、可讓您選取NetApp帳戶並命名系統。"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>現在已安裝並設定 Connector 。您必須先授予 Azure 權限、使用者才能在 Cloud Volumes ONTAP Azure 中部署不必要的功能。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="授予-azure-權限">授予 Azure 權限</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>當您在 Azure 中部署 Connector 時、您應該已啟用 <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">"系統指派的託管身分識別"</a>。您現在必須建立自訂角色、然後將角色指派給 Connector 虛擬機器以進行一或多項訂閱、以授予必要的 Azure 權限。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>使用 Cloud Manager 原則建立自訂角色：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>下載 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager Azure 原則"</a>。</p>
+</li>
+<li>
+<p>將 Azure 訂閱 ID 新增至可指派的範圍、以修改 Json 檔案。</p>
+<div class="paragraph">
+<p>您應該為使用者建立 Cloud Volumes ONTAP 的各個 Azure 訂閱新增 ID 。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>範例 *</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>「 AssignableScopes 」： [ 「 /unorder/d333af45-0d07-4154-943d-c25fbzzzz 」、「 /unorder/54b91999-b3e6-4599-908e-416e0zzzz 」、「 /unuses/398e471c-3bzzz-4bez-4bez-4bez-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bez-</p>
+</div>
+</li>
+<li>
+<p>使用 Json 檔案在 Azure 中建立自訂角色。</p>
+<div class="paragraph">
+<p>下列範例說明如何使用 Azure CLI 2.0 建立自訂角色：</p>
+</div>
+<div class="paragraph">
+<p>「AZ角色定義建立-角色定義C：\Policy_for_Cloud Manager、Azure _3.9.8.json」</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>您現在應該擁有名為 Cloud Manager 的自訂角色、可以指派給 Connector 虛擬機器。</p>
+</div>
+</li>
+<li>
+<p>將角色指派給連接器虛擬機器以進行一或多項訂閱：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>開啟 * 「訂閱」 * 服務、然後選取您要在其中部署 Cloud Volumes ONTAP 的訂閱。</p>
+</li>
+<li>
+<p>按一下*存取控制（IAM）<strong>&gt;*新增</strong>&gt;*新增角色指派*。</p>
+</li>
+<li>
+<p>在「<strong>角色</strong>」索引標籤中、選取「* Cloud Manager operator*」角色、然後按一下「<strong>下一步</strong>」。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-setup-admin/images/note.svg" alt="附註">
+</td>
+<td class="content">
+Cloud Manager 運算子是中提供的預設名稱 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies">"Cloud Manager 原則"</a>。如果您為角色選擇不同的名稱、請改為選取該名稱。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>在「<strong>成員</strong>」索引標籤中、完成下列步驟：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>指派*託管身分識別*的存取權。</p>
+</li>
+<li>
+<p>按一下*選取成員*、選取建立連接器虛擬機器的訂閱、選擇*虛擬機器*、然後選取連接器虛擬機器。</p>
+</li>
+<li>
+<p>按一下*選取*。</p>
+</li>
+<li>
+<p>單擊 * 下一步 * 。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>按一下「<strong>檢閱+指派</strong>」。</p>
+</li>
+<li>
+<p>如果您想要從 Cloud Volumes ONTAP 其他訂閱中部署、請切換至該訂閱、然後重複這些步驟。</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Connector 現在擁有管理公有雲環境中資源和程序所需的權限。當您建立新的工作環境時、 Cloud Manager 會自動使用此 Connector 。但如果您有多個連接器、就需要 <a href="task-managing-connectors.html">"在兩者之間切換"</a>。</p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">legal-terms</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">legal-privacy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">legal-cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">cookie-settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">對我們的網站有任何意見或要求？</span>
+              <a target="_self" href="javascript:netapp_mailto()">請與我們聯絡</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/zh-tw/announcements/">公告</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-tw/cloud-manager-setup-admin/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-tw/cloud-manager-setup-admin/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-tw/cloud-manager-setup-admin/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-tw/cloud-manager-setup-admin/js/www-ntap.js'></script>
+    <script src='/zh-tw/cloud-manager-setup-admin/js/tabbed-blocks.js'></script>
+  </body></html>

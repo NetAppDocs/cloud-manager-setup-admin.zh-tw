@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+    
+    
+  
+
+  
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-accounts-aws.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-accounts-azure.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-accounts-gcp.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-connectors.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-netapp-accounts.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-overview.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/legal-notices.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-checklist-cm.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-connector-default-config.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-limitations.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-networking-cloud-manager.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-gcp.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-user-roles.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-whats-next.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin//search.html</loc>
+      
+      <lastmod>2022-05-03T06:07:18+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-adding-aws-accounts.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-adding-azure-accounts.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-adding-gcp-accounts.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-adding-nss-accounts.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-configuring-proxy.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-aws.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-azure.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-gcp.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-finding-system-id.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-get-help.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-installing-https-cert.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-installing-linux.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-aws-mktp.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-azure-mktp.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-logging-in.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-managing-connectors.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-managing-netapp-accounts.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-monitor-cm-operations.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-setting-up-netapp-accounts.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-signing-up.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-support-registration.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-viewing-amazon-s3.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/whats-new.html</loc>
+      
+      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      
+    </url>
+  
+
+  
+  
+</urlset>
