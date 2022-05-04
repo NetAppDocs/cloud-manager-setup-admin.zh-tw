@@ -999,7 +999,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-05-04 14:40:09 +0000">05/04/2022</time>
     
   
 
@@ -1009,68 +1009,99 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>如果您需要疑難排解 Connector 、可能有助於瞭解其設定方式。</p>
+<p>您可能想要在部署連接器之前、或是需要疑難排解任何問題時、先深入瞭解連接器。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="具備網際網路存取的預設組態">具備網際網路存取的預設組態</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>如果您是從Cloud Manager、雲端供應商的市場部署Connector、或是在可存取網際網路的內部部署Linux主機上手動安裝Connector、則適用下列組態詳細資料。</p>
+</div>
+<div class="sect2">
+<h3 id="aws詳細資料">AWS詳細資料</h3>
+<div class="paragraph">
+<p>如果您是從Cloud Manager或雲端供應商的市場部署Connector、請注意下列事項：</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>如果您是從 Cloud Manager （或直接從雲端供應商的市場）部署 Connector 、請注意下列事項：</p>
-<div class="ulist">
-<ul>
-<li>
-<p>在 AWS 中、 EC2 Linux 執行個體的使用者名稱為 EC2-user.</p>
+<p>EC2執行個體類型為T3.xLarge。</p>
 </li>
 <li>
-<p>映像的作業系統如下：</p>
-<div class="ulist">
-<ul>
-<li>
-<p>AWS：Red Hat Enterprise Linux 7.6（HVM）</p>
-</li>
-<li>
-<p>Azure：CentOS 7.6</p>
-</li>
-<li>
-<p>GCP：CentOS 7.9</p>
+<p>映像的作業系統為Red Hat Enterprise Linux 7.6（HVM）。</p>
 <div class="paragraph">
 <p>作業系統不含 GUI 。您必須使用終端機來存取系統。</p>
 </div>
 </li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<li>
+<p>EC2 Linux執行個體的使用者名稱為EC2使用者。</p>
 </li>
 <li>
-<p>從Cloud Manager部署時、預設的系統磁碟如下所示：</p>
+<p>預設的系統磁碟為50 GiB gp2磁碟。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure詳細資料">Azure詳細資料</h3>
+<div class="paragraph">
+<p>如果您是從Cloud Manager或雲端供應商的市場部署Connector、請注意下列事項：</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>AWS：50 GiB gp2磁碟</p>
+<p>VM類型為DS3 v2。</p>
 </li>
 <li>
-<p>Azure：100 GiB優質SSD磁碟</p>
+<p>映像的作業系統為CentOS 7.6。</p>
+<div class="paragraph">
+<p>作業系統不含 GUI 。您必須使用終端機來存取系統。</p>
+</div>
 </li>
 <li>
-<p>Google Cloud：100 GiB SSD持續磁碟</p>
+<p>預設系統磁碟為100 GiB優質SSD磁碟。</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="google-cloud詳細資料">Google Cloud詳細資料</h3>
+<div class="paragraph">
+<p>如果您是從Cloud Manager或雲端供應商的市場部署Connector、請注意下列事項：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>VM執行個體為n1-Standard-4。</p>
 </li>
 <li>
-<p>Connector 安裝資料夾位於下列位置：</p>
+<p>映像的作業系統為CentOS 7.9。</p>
 <div class="paragraph">
-<p>/opt/application/NetApp/cloudmanager</p>
+<p>作業系統不含 GUI 。您必須使用終端機來存取系統。</p>
 </div>
 </li>
 <li>
+<p>預設系統磁碟為100 GiB SSD持續磁碟。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="安裝資料夾">安裝資料夾</h3>
+<div class="paragraph">
+<p>Connector 安裝資料夾位於下列位置：</p>
+</div>
+<div class="paragraph">
+<p>/opt/application/NetApp/cloudmanager</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="記錄檔">記錄檔</h3>
+<div class="paragraph">
 <p>記錄檔包含在下列資料夾中：</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1087,7 +1118,11 @@
 </li>
 </ul>
 </div>
-</li>
+</div>
+<div class="sect2">
+<h3 id="連接器服務">連接器服務</h3>
+<div class="ulist">
+<ul>
 <li>
 <p>Cloud Manager 服務的名稱為 occm 。</p>
 </li>
@@ -1097,8 +1132,14 @@
 <p>如果 MySQL 服務當機、則 occm 服務也會停機。</p>
 </div>
 </li>
-<li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="套件">套件</h3>
+<div class="paragraph">
 <p>Cloud Manager 會在 Linux 主機上安裝下列套件（如果尚未安裝）：</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1130,9 +1171,12 @@
 </li>
 </ul>
 </div>
-</li>
-<li>
+</div>
+<div class="sect2">
+<h3 id="連接埠">連接埠</h3>
+<div class="paragraph">
 <p>連接器在 Linux 主機上使用下列連接埠：</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1155,8 +1199,6 @@
 </li>
 </ul>
 </div>
-</li>
-</ul>
 </div>
 </div>
 </div>
