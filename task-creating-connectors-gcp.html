@@ -999,7 +999,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-05-09 14:23:16 +0000">05/09/2022</time>
     
   
 
@@ -1012,7 +1012,7 @@
 <p>客戶管理員必須先部署 <em>Connector</em> 、才能使用大多數 Cloud Manager 功能。 <a href="concept-connectors.html">"瞭解何時需要連接器"</a>。Connector 可讓 Cloud Manager 管理公有雲環境中的資源與程序。</p>
 </div>
 <div class="paragraph">
-<p>本頁說明如何直接從 Cloud Manager 在 GCP 中建立 Connector 。 <a href="concept-connectors.html#how-to-create-a-connector">"瞭解部署Connector的其他方法"</a>。</p>
+<p>本頁說明如何直接從Cloud Manager在Google Cloud中建立Connector。 <a href="concept-connectors.html#how-to-create-a-connector">"瞭解部署Connector的其他方法"</a>。</p>
 </div>
 <div class="paragraph">
 <p>這些步驟必須由具有「帳戶管理」角色的使用者完成。工作區管理員無法建立 Connector 。</p>
@@ -1035,13 +1035,13 @@
 <h2 id="設定權限">設定權限</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>在部署Connector之前、您必須確保GCP帳戶擁有正確的權限、而且已針對Connector VM設定服務帳戶。</p>
+<p>在部署Connector之前、您必須先確保Google Cloud帳戶擁有正確的權限、並為Connector VM設定服務帳戶。</p>
 </div>
 <div class="olist arabic">
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>確認部署Connector的GCP使用者具有中的權限 <a href="https://occm-sample-policies.s3.amazonaws.com/Setup_As_Service_3.7.3_GCP.yaml" target="_blank" rel="noopener">"GCP 的連接器部署原則"</a>。</p>
+<p>確認部署Connector的Google Cloud使用者具有中的權限 <a href="https://occm-sample-policies.s3.amazonaws.com/Setup_As_Service_3.7.3_GCP.yaml" target="_blank" rel="noopener">"Google Cloud的Connector部署原則"</a>。</p>
 <div class="paragraph">
 <p><a href="https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud" target="_blank" rel="noopener">"您可以使用 Yaml 檔案建立自訂角色"</a> 然後附加到使用者。您需要使用 gCloud 命令列來建立角色。</p>
 </div>
@@ -1054,13 +1054,13 @@
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><a href="https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud" target="_blank" rel="noopener">"在 GCP 中建立角色"</a> 這包括在中定義的權限 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.9.10_GCP.yaml" target="_blank" rel="noopener">"GCP 的 Cloud Manager 原則"</a>。同樣地、您需要使用 gCloud 命令列。</p>
+<p><a href="https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud" target="_blank" rel="noopener">"在 GCP 中建立角色"</a> 這包括在中定義的權限 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.9.10_GCP.yaml" target="_blank" rel="noopener">"適用於Google Cloud的Cloud Manager原則"</a>。同樣地、您需要使用 gCloud 命令列。</p>
 <div class="paragraph">
 <p>此 Y反 洗錢檔案所含的權限與步驟 1 中的權限不同。</p>
 </div>
 </li>
 <li>
-<p><a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account" target="_blank" rel="noopener">"建立 GCP 服務帳戶、並套用您剛建立的自訂角色"</a>。</p>
+<p><a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account" target="_blank" rel="noopener">"建立Google Cloud服務帳戶、並套用您剛建立的自訂角色"</a>。</p>
 </li>
 <li>
 <p>如果您想要在 Cloud Volumes ONTAP 其他專案中部署 <a href="https://cloud.google.com/iam/docs/granting-changing-revoking-access#granting-console" target="_blank" rel="noopener">"將具有 Cloud Manager 角色的服務帳戶新增至該專案、以授予存取權"</a>。您必須針對每個專案重複此步驟。</p>
@@ -1071,7 +1071,7 @@
 </ol>
 </div>
 <div class="paragraph">
-<p>GCP使用者現在擁有建立Connector所需的權限、並已設定Connector VM的服務帳戶。</p>
+<p>Google Cloud使用者現在擁有建立Connector所需的權限、並已設定Connector VM的服務帳戶。</p>
 </div>
 <div class="sect2">
 <h3 id="共享vpc權限">共享VPC權限</h3>
@@ -1089,7 +1089,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">服務帳戶</th>
+<th class="tableblock halign-left valign-top">身分識別</th>
 <th class="tableblock halign-left valign-top">建立者</th>
 <th class="tableblock halign-left valign-top">裝載於</th>
 <th class="tableblock halign-left valign-top">服務專案權限</th>
@@ -1099,7 +1099,27 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Manager服務帳戶</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">用於部署Connector的Google帳戶</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">自訂</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">服務專案</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="https://occm-sample-policies.s3.amazonaws.com/Setup_As_Service_3.7.3_GCP.yaml" target="_blank" rel="noopener">"在此.yaml檔案中找到的權限"</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>compute.networkUser</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">在服務專案中部署Connector</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">連接器服務帳戶</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">自訂</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">服務專案</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
@@ -1140,7 +1160,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Google API服務代理程式</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GCP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">服務專案</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -1156,11 +1176,11 @@
 </li>
 </ul>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">代表部署與GCP API互動。允許Cloud Manager使用共享網路。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">代表部署與Google Cloud API互動。允許Cloud Manager使用共享網路。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Google Compute Engine預設服務帳戶</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GCP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">服務專案</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
@@ -1176,7 +1196,7 @@
 </li>
 </ul>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">代表部署來部署GCP執行個體和運算基礎架構。允許Cloud Manager使用共享網路。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">代表部署部署部署部署Google Cloud執行個體和運算基礎架構。允許Cloud Manager使用共享網路。</p></td>
 </tr>
 </tbody>
 </table>
@@ -1235,7 +1255,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="在-gcp-中建立連接器">在 GCP 中建立連接器</h2>
+<h2 id="在google-cloud中建立connector">在Google Cloud中建立Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>直接從Cloud Manager使用者介面或使用gCloud在Google Cloud中建立Connector。</p>
@@ -1340,7 +1360,7 @@
 <li>
 <p>使用您偏好的方法登入gCloud SDK。</p>
 <div class="paragraph">
-<p>在我們的範例中、我們會使用已安裝gCloud SDK的本機Shell、但您可以在GCP主控台使用原生Google Cloud Shell。</p>
+<p>在我們的範例中、我們會使用已安裝gCloud SDK的本機Shell、但您可以在Google Cloud主控台使用原生Google Cloud Shell。</p>
 </div>
 <div class="paragraph">
 <p>如需Google Cloud SDK的詳細資訊、請參閱 <a href="https://cloud.google.com/sdk" target="_blank" rel="noopener">"Google Cloud SDK文件頁面"</a>。</p>
@@ -1500,16 +1520,16 @@ $ gcloud components update</pre>
               <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
             </li>
             <li class="n-footer__copyright-link">
-              <a href="https://www.netapp.com/company/legal/terms-of-use/">legal-terms</a>
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">條款與條件</a>
             </li>
             <li class="n-footer__copyright-link">
-              <a href="https://www.netapp.com/company/legal/privacy-policy/">legal-privacy</a>
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
             </li>
             <li class="n-footer__copyright-link">
-              <a href="https://www.netapp.com/company/legal/cookie-policy/">legal-cookies</a>
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
             </li>
             <li class="n-footer__copyright-link">
-              <a class="ot-sdk-show-settings">cookie-settings</a>
+              <a class="ot-sdk-show-settings">Cookie 設定</a>
             </li>
           </ul>
         </div>
