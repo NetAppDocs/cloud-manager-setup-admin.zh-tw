@@ -993,7 +993,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-06-20 19:55:08 +0000">06/20/2022</time>
     
   
 
@@ -1036,38 +1036,22 @@
 <h2 id="存取本機ui">存取本機UI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>雖然您應該從 SaaS 使用者介面執行幾乎所有的工作、但連接器上仍有本機使用者介面可供使用。需要從 Connector 本身執行的幾項工作需要使用此介面：</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="task-configuring-proxy.html">"設定 Proxy 伺服器"</a></p>
-</li>
-<li>
-<p>安裝修補程式（您通常會與 NetApp 人員一起安裝修補程式）</p>
-</li>
-<li>
-<p>下載 AutoSupport 資訊（如有問題、通常由 NetApp 人員引導）</p>
-</li>
-</ul>
+<p>雖然您應該從 SaaS 使用者介面執行幾乎所有的工作、但連接器上仍有本機使用者介面可供使用。如果您是從政府區域或沒有外傳網際網路存取的網站存取Cloud Manager、則必須使用連接器上執行的本機使用者介面。</p>
 </div>
 <div class="olist arabic">
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p><a href="task-logging-in.html" target="_blank" rel="noopener">"登入 Cloud Manager SaaS 介面"</a> 從連線至連接器執行個體的機器。</p>
+<p>開啟網頁瀏覽器並輸入下列 URL ：</p>
 <div class="paragraph">
-<p>如果連接器沒有公有 IP 位址、您將需要 VPN 連線、或是需要從連接器所在的同一個網路中的跨接主機連線。</p>
+<p>https://<em>ipaddress</em>[]</p>
+</div>
+<div class="paragraph">
+<p><em>ipaddress</em> 可以是 localhost 、私有 IP 位址或公有 IP 位址、視主機的組態而定。例如、如果連接器位於沒有公有 IP 位址的公有雲中、您必須輸入連接至連接器主機之主機的私有 IP 位址。</p>
 </div>
 </li>
 <li>
-<p>按一下「* Connector*（<strong>連接器</strong>）」下拉式清單、然後按一下「<strong>移至本機ui</strong>」。</p>
-<div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_connector_local_ui.gif" alt="螢幕擷取畫面會在標題中顯示 Connector 圖示、以及「前往本機 UI 」動作。"></span></p>
-</div>
-<div class="paragraph">
-<p>在 Connector 上執行的 Cloud Manager 介面會載入新的瀏覽器索引標籤。</p>
-</div>
+<p>輸入您的使用者名稱和密碼以登入。</p>
 </li>
 </ol>
 </div>
