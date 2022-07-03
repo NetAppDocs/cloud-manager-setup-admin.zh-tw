@@ -959,7 +959,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-07-03 15:55:23 +0000">07/03/2022</time>
     
   
 
@@ -982,15 +982,21 @@
 <div class="ulist">
 <ul>
 <li>
-<p>將AWS認證資料新增至現有的Connector</p>
+<p>將額外的AWS認證資料新增至現有的Connector</p>
 <div class="paragraph">
-<p>將新的AWS認證資料新增至現有的Connector、可讓您Cloud Volumes ONTAP 使用相同的Connector在另一個AWS帳戶中部署。 <a href="#Add credentials to a Connector">瞭解如何將AWS認證資料新增至Connector</a>。</p>
+<p>將新的AWS認證資料新增至現有的Connector、可讓您Cloud Volumes ONTAP 使用相同的Connector在另一個AWS帳戶中部署。 <a href="#Add additional credentials to a Connector">瞭解如何將AWS認證資料新增至Connector</a>。</p>
 </div>
 </li>
 <li>
-<p>直接將AWS認證資料新增至Cloud Manager</p>
+<p>將AWS認證資料新增至Cloud Manager以建立Connector</p>
 <div class="paragraph">
-<p>將新的AWS認證資料新增至Cloud Manager、可讓Cloud Manager擁有必要的權限、以建立和管理適用於ONTAP 整個作業環境的FSX、或是建立Connector。 <a href="#Add credentials to Cloud Manager">瞭解如何將AWS認證資料新增至Cloud Manager</a>。</p>
+<p>將新的AWS認證資料新增至Cloud Manager、可讓Cloud Manager擁有建立Connector所需的權限。 <a href="#Add credentials to Cloud Manager for creating a Connector">瞭解如何將AWS認證資料新增至Cloud Manager</a>。</p>
+</div>
+</li>
+<li>
+<p>將AWS認證資料新增至Cloud Manager for FSX ONTAP for Sf</p>
+<div class="paragraph">
+<p>將新的AWS認證資料新增至Cloud Manager、可讓Cloud Manager擁有必要的權限、以建立及管理FSXfor ONTAP the Sfor。 <a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/requirements/task-setting-up-permissions-fsx.html" target="_blank" rel="noopener">"瞭解如何設定FSX for ONTAP Sfor Sfor Sfor的權限"</a></p>
 </div>
 </li>
 </ul>
@@ -1012,7 +1018,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="新增認證到connector">新增認證到Connector</h2>
+<h2 id="新增其他認證資料至connector">新增其他認證資料至Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>將AWS認證資料新增至Connector、以便在Cloud Volumes ONTAP 其他AWS帳戶中部署及管理功能。您可以在其他帳戶中提供IAM角色的ARN、或是提供AWS存取金鑰。</p>
@@ -1177,13 +1183,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="新增認證資料至cloud-manager">新增認證資料至Cloud Manager</h2>
+<h2 id="將認證資料新增至cloud-manager以建立connector">將認證資料新增至Cloud Manager以建立Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>為Cloud Manager提供IAM角色的ARN、讓Cloud Manager擁有必要的權限、可為ONTAP 工作環境建立FSX或 建立連接器、藉此將AWS認證新增至Cloud Manager。</p>
-</div>
-<div class="paragraph">
-<p>您可以在建立FSXfor ONTAP the Sfor the Sfor the Sfor the Sfor the Sfuse環境或建立新的Connector時、使用認證資料。</p>
+<p>提供IAM角色的ARN、讓Cloud Manager擁有建立Connector所需的權限、藉此將AWS認證新增至Cloud Manager。您可以在建立新的Connector時選擇這些認證資料。</p>
 </div>
 <div class="sect2">
 <h3 id="設定iam角色">設定IAM角色</h3>
@@ -1210,16 +1213,9 @@
 <p>選取*其他AWS帳戶*、然後輸入Cloud Manager SaaS的ID：952013314444.</p>
 </li>
 <li>
-<p>建立一個原則、其中包含建立FSXfor ONTAP the S作業 環境或建立連接器所需的權限。</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/requirements/task-setting-up-permissions-fsx.html" target="_blank" rel="noopener">"檢視FSXfor ONTAP Sfor Sf哪些 權限"</a></p>
-</li>
-<li>
+<p>建立包含建立Connector所需權限的原則。</p>
+<div class="paragraph">
 <p>從檢視Connector部署原則 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager 原則頁面"</a></p>
-</li>
-</ul>
 </div>
 </li>
 </ul>
@@ -1270,7 +1266,7 @@
 </ol>
 </div>
 <div class="paragraph">
-<p>現在您可以在建立FSXfor ONTAP the Sfor the Sfor the Sfor the fuse環境或建立新的Connector時、使用認證資料。</p>
+<p>您現在可以在建立新的Connector時使用認證資料。</p>
 </div>
 </div>
 </div>

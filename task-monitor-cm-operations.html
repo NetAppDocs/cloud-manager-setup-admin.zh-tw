@@ -9,15 +9,15 @@
   <meta property="og:title" content="監控您帳戶中的作業 | NetApp Documentation" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-monitor-cm-operations.html" />
-	<meta property="og:description" content="您可以監控Cloud Manager執行的作業狀態、查看是否有任何需要解決的問題。您可以在「通知中心」或「時間表」中檢視狀態。" />
+	<meta property="og:description" content="您可以監控Cloud Manager執行的作業狀態、查看是否有任何需要解決的問題。您可以在「通知中心」、「時間表」中檢視狀態、或將通知傳送至您的電子郵件。" />
   <meta property="og:image" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="您可以監控Cloud Manager執行的作業狀態、查看是否有任何需要解決的問題。您可以在「通知中心」或「時間表」中檢視狀態。">
-  <meta name="keywords" content=" administer, monitor, account, timeline, notifications, alerts, events, notification center"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="您可以監控Cloud Manager執行的作業狀態、查看是否有任何需要解決的問題。您可以在「通知中心」、「時間表」中檢視狀態、或將通知傳送至您的電子郵件。">
+  <meta name="keywords" content=" administer, monitor, account, timeline, notifications, alerts, events, notification center, email"><!-- Icons -->
   <link rel="icon" href="/zh-tw/cloud-manager-setup-admin/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/zh-tw/cloud-manager-setup-admin/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -959,7 +959,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-07-03 15:55:23 +0000">07/03/2022</time>
     
   
 
@@ -969,7 +969,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>您可以監控Cloud Manager執行的作業狀態、查看是否有任何需要解決的問題。您可以在「通知中心」或「時間表」中檢視狀態。</p>
+<p>您可以監控Cloud Manager執行的作業狀態、查看是否有任何需要解決的問題。您可以在「通知中心」、「時間表」中檢視狀態、或將通知傳送至您的電子郵件。</p>
 </div>
 <div class="paragraph">
 <p>此表格提供通知中心與時間表的比較、讓您瞭解每項服務的內容。</p>
@@ -992,7 +992,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">顯示目前登入工作階段的狀態：登出後、資訊不會出現在通知中心</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">保留直到上個月的狀態</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">保留上個月的狀態</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">僅顯示在使用者介面中啟動的動作</p></td>
@@ -1006,37 +1006,72 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">依重要性篩選結果</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">依服務、行動、使用者、狀態及其他項目篩選</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可將通知以電子郵件傳送給帳戶使用者和其他人</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">無電子郵件功能</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect1">
-<h2 id="使用通知中心監控作業狀態">使用通知中心監控作業狀態</h2>
+<h2 id="使用通知中心監控活動">使用通知中心監控活動</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>通知就像是追蹤您在Cloud Manager中啟動之作業進度的事件、以便您確認作業是否成功、或是否失敗。您可以檢視在目前登入工作階段期間所啟動的Cloud Manager作業（以及未來雲端服務作業）狀態。</p>
-</div>
-<div class="paragraph">
-<p>目前僅Cloud Volumes ONTAP 支援建立及刪除下列物件的通知：</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>工作環境</p>
-</li>
-<li>
-<p>集合體</p>
-</li>
-<li>
-<p>磁碟區</p>
-</li>
-</ul>
+<p>通知會追蹤您在Cloud Manager中啟動的作業進度、以便您確認作業是否成功。您可透過這些工具來檢視目前登入工作階段期間所啟動的許多Cloud Manager作業狀態。</p>
 </div>
 <div class="paragraph">
 <p>您可以按一下通知鈴聲（<span class="image"><img src="./media/icon_bell.png" alt="通知鈴聲"></span>）。警示中的小球型罩顏色代表作用中的最高層級嚴重性通知。因此、如果您看到紅色的球型罩、就表示您應該查看重要通知。</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/screenshot_notification_full.png" alt="顯示通知中心目前通知清單的快照。"></span></p>
+</div>
+<div class="paragraph">
+<p>您也可以設定Cloud Manager以電子郵件傳送通知、即使您尚未登入系統、也能得知重要的系統活動。電子郵件可傳送給屬於您NetApp雲端帳戶一部分的任何Cloud Central使用者、或傳送給任何其他需要注意特定系統活動類型的收件者。請參閱 <a href="#Setting email notification settings">設定電子郵件通知設定</a> 以下。</p>
+</div>
+<div class="sect2">
+<h3 id="通知類型">通知類型</h3>
+<div class="paragraph">
+<p>通知分為下列類別：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 31.25%;">
+<col style="width: 68.75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">通知類型</th>
+<th class="tableblock halign-left valign-top">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">關鍵</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">如果未立即採取修正行動、可能導致服務中斷。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">錯誤</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">某項行動或程序因故障而結束、或是在未採取修正行動時可能導致故障。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">您應注意的問題、以確保其未達到嚴重嚴重性。此嚴重性的通知不會造成服務中斷、因此可能不需要立即採取修正行動。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">建議</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">系統建議您採取行動來改善系統或特定服務、例如：節省成本、建議新服務、建議的安全組態等</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">資訊</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">提供有關行動或程序的其他資訊的訊息。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">成功</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">已成功完成行動或程序。</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="篩選通知">篩選通知</h3>
@@ -1048,6 +1083,65 @@
 </div>
 <div class="paragraph">
 <p>例如、如果您只想查看Cloud Manager作業的「錯誤」和「警告」通知、請選取這些項目、您只會看到這些通知類型。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="設定電子郵件通知設定">設定電子郵件通知設定</h3>
+<div class="paragraph">
+<p>您可以透過電子郵件傳送特定類型的通知、即使您尚未登入Cloud Manager、也能得知重要的系統活動。電子郵件可傳送給您的NetApp帳戶中的任何使用者、或是任何其他需要注意特定系統活動類型的收件者。</p>
+</div>
+<div class="paragraph">
+<p>依預設、帳戶管理員會收到所有「重大」和「建議」通知的電子郵件。根據預設、所有其他使用者和收件者都會設定為不接收任何通知電子郵件。</p>
+</div>
+<div class="paragraph">
+<p>您必須是帳戶管理員、才能自訂通知設定。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>在Cloud Manager功能表列中、按一下*設定&gt;警示與通知設定*。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-settings-notifications.png" alt="顯示如何顯示「警示與通知設定」頁面的快照。"></span></p>
+</div>
+</li>
+<li>
+<p>從「帳戶使用者_」索引標籤或「<em>其他收件者</em>」索引標籤中選取一位或多位使用者、然後選擇要傳送的通知類型：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>若要變更單一使用者、請按一下該使用者「通知」欄中的功能表、檢查要傳送的通知類型、然後按一下「<strong>套用</strong>」。</p>
+</li>
+<li>
+<p>若要變更多位使用者、請勾選每位使用者的方塊、按一下*管理電子郵件通知*、勾選要傳送的通知類型、然後按一下*套用*。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-change-notifications.png" alt="顯示如何變更多位使用者通知的螢幕快照。"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="新增其他電子郵件收件者">新增其他電子郵件收件者</h3>
+<div class="paragraph">
+<p>出現在「<em>Account Users</em>」（帳戶使用者_）標籤的使用者、會自動從您NetApp帳戶中的使用者（從 <a href="task-managing-netapp-accounts.html#creating-and-managing-users">"管理帳戶頁面"</a>）。您可以在「<em>其他收件者</em>」索引標籤中新增電子郵件地址、以供無權存取Cloud Manager但需要收到特定警示和通知類型通知的其他人員或群組使用。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>在「警示與通知設定」頁面中、按一下*「新增收件者」*。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-add-email-recipient.png" alt="顯示如何新增電子郵件收件者以接收警示和通知的螢幕快照。"></span></p>
+</div>
+</li>
+<li>
+<p>輸入姓名、電子郵件地址、然後選取收件者要接收的通知類型、然後按一下*「Add New Recipient*（新增收件者*）」。</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -1077,7 +1171,7 @@
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>按一下「<strong>所有服務&gt;時間表</strong>」。</p>
+<p>從左側導覽功能表中、選取* Timeline *。</p>
 </li>
 <li>
 <p>在「篩選器」下、按一下「<strong>服務</strong>」、「啟用*佔用*」、然後按一下「<strong>套用</strong>」。</p>
