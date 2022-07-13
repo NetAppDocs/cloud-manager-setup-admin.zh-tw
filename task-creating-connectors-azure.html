@@ -699,6 +699,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -877,7 +879,9 @@
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 參考資料</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions.html">
+        權限摘要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
         Connector的AWS權限
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html">
         連接器的Azure權限
@@ -961,7 +965,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-07-13 19:43:59 +0000">07/13/2022</time>
     
   
 
@@ -978,18 +982,6 @@
 </div>
 <div class="paragraph">
 <p>這些步驟必須由具有「帳戶管理」角色的使用者完成。工作區管理員無法建立 Connector 。</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/cloud-manager-setup-admin/images/tip.svg" alt="提示">
-</td>
-<td class="content">
-當您建立第一個 Cloud Volumes ONTAP 運作環境時、如果您還沒有 Cloud Manager 、 Cloud Manager 會提示您建立 Connector 。
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -1021,7 +1013,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="azure地區注意事項">Azure地區注意事項</h2>
+<h2 id="azure地區的相關注意事項">Azure地區的相關注意事項</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>連接器應部署在Cloud Volumes ONTAP 其所管理的或所管理的各個系統所在的Azure區域 <a href="https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies" target="_blank" rel="noopener">"Azure區域配對"</a> 適用於整個系統。Cloud Volumes ONTAP這項需求可確保Cloud Volumes ONTAP Azure Private Link連線可用於連接至相關的儲存帳戶。 <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-enabling-private-link.html" target="_blank" rel="noopener">"瞭Cloud Volumes ONTAP 解如何使用Azure Private Link"</a>。</p>
@@ -1043,22 +1035,92 @@
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>下載 <a href="https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service_Azure.json" target="_blank" rel="noopener">"連接器的 Azure 原則"</a>。</p>
-<div class="admonitionblock tip">
+<p>複製Azure中新自訂角色所需的權限、並將其儲存在Json檔案中。</p>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<img src="/us-en/cloud-manager-setup-admin/images/tip.svg" alt="提示">
+<img src="/us-en/cloud-manager-setup-admin/images/note.svg" alt="附註">
 </td>
 <td class="content">
-在連結上按一下滑鼠右鍵、然後按一下「 * 另存連結為 &#8230;&#8203; * 」下載檔案。
+此原則僅包含從Cloud Manager在Azure中啟動Connector VM所需的權限。請勿在其他情況下使用此原則。Cloud Manager建立Connector時、會套用新的一組權限至Connector VM、讓Connector能夠管理公有雲環境中的資源。
 </td>
 </tr>
 </table>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "Name": "Azure SetupAsService",
+    "Actions": [
+        "Microsoft.Compute/disks/delete",
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/locations/operations/read",
+        "Microsoft.Compute/operations/read",
+        "Microsoft.Compute/virtualMachines/instanceView/read",
+        "Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/write",
+        "Microsoft.Compute/virtualMachines/delete",
+        "Microsoft.Compute/virtualMachines/extensions/write",
+        "Microsoft.Compute/virtualMachines/extensions/read",
+        "Microsoft.Compute/availabilitySets/read",
+        "Microsoft.Network/locations/operationResults/read",
+        "Microsoft.Network/locations/operations/read",
+        "Microsoft.Network/networkInterfaces/join/action",
+        "Microsoft.Network/networkInterfaces/read",
+        "Microsoft.Network/networkInterfaces/write",
+        "Microsoft.Network/networkInterfaces/delete",
+        "Microsoft.Network/networkSecurityGroups/join/action",
+        "Microsoft.Network/networkSecurityGroups/read",
+        "Microsoft.Network/networkSecurityGroups/write",
+        "Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+        "Microsoft.Network/virtualNetworks/subnets/read",
+        "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+        "Microsoft.Network/virtualNetworks/virtualMachines/read",
+        "Microsoft.Network/publicIPAddresses/write",
+        "Microsoft.Network/publicIPAddresses/read",
+        "Microsoft.Network/publicIPAddresses/delete",
+        "Microsoft.Network/networkSecurityGroups/securityRules/read",
+        "Microsoft.Network/networkSecurityGroups/securityRules/write",
+        "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+        "Microsoft.Network/publicIPAddresses/join/action",
+        "Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read",
+        "Microsoft.Network/networkInterfaces/ipConfigurations/read",
+        "Microsoft.Resources/deployments/operations/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Resources/deployments/delete",
+        "Microsoft.Resources/deployments/cancel/action",
+        "Microsoft.Resources/deployments/validate/action",
+        "Microsoft.Resources/resources/read",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/delete",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/write",
+        "Microsoft.Authorization/roleDefinitions/write",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write",
+        "Microsoft.Network/networkSecurityGroups/delete",
+        "Microsoft.Storage/storageAccounts/delete",
+        "Microsoft.Storage/storageAccounts/write",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/deployments/operationStatuses/read",
+        "Microsoft.Authorization/roleAssignments/read"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Azure SetupAsService",
+    "IsCustom": "true"
+}</code></pre>
+</div>
+</div>
 </li>
 <li>
-<p>將 Azure 訂閱 ID 新增至可指派的範圍、以修改 Json 檔案。</p>
+<p>將您的Azure訂閱ID新增至可指派的範圍、以修改Json。</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1127,7 +1189,7 @@
 <img src="/us-en/cloud-manager-setup-admin/images/note.svg" alt="附註">
 </td>
 <td class="content">
-Azure Setup AsService 是中提供的預設名稱 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Azure 的連接器部署原則"</a>。如果您為角色選擇不同的名稱、請改為選取該名稱。
+Azure Setup AsService是Azure的Connector部署原則中提供的預設名稱。如果您為角色選擇不同的名稱、請改為選取該名稱。
 </td>
 </tr>
 </table>
@@ -1172,7 +1234,7 @@ Azure Setup AsService 是中提供的預設名稱 <a href="https://mysupport.net
 <p>您所選擇的 Azure 區域中的 Vnet 和子網路。</p>
 </li>
 <li>
-<p>如果您不想讓Cloud Manager自動為Connector建立Azure角色、則必須自行建立 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.9.12.json" target="_blank" rel="noopener">"使用此原則"</a>。</p>
+<p>如果您不想讓Cloud Manager自動為Connector建立Azure角色、則必須自行建立 <a href="reference-permissions-azure.html">"使用此頁面上的原則"</a>。</p>
 <div class="paragraph">
 <p>這些權限適用於Connector執行個體本身。這是一組不同於您先前設定的權限、只要部署Connector即可。</p>
 </div>
@@ -1230,7 +1292,7 @@ Azure Setup AsService 是中提供的預設名稱 <a href="https://mysupport.net
 <p>* VM驗證*：選擇Azure訂閱、位置、新資源群組或現有資源群組、然後選擇驗證方法。</p>
 </li>
 <li>
-<p><strong>詳細資料</strong>：輸入執行個體的名稱、指定標記、然後選擇是否要Cloud Manager建立具有必要權限的新角色、或是要選取您設定的現有角色 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.9.12.json" target="_blank" rel="noopener">"必要的權限"</a>。</p>
+<p><strong>詳細資料</strong>：輸入執行個體的名稱、指定標記、然後選擇是否要Cloud Manager建立具有必要權限的新角色、或是要選取您設定的現有角色 <a href="reference-permissions-azure.html">"必要的權限"</a>。</p>
 <div class="paragraph">
 <p>請注意、您可以選擇與此角色相關的訂閱。您選擇的每個訂閱都會提供Connector權限、讓他們在Cloud Volumes ONTAP 這些訂閱中部署功能。</p>
 </div>
@@ -1361,18 +1423,88 @@ Azure Setup AsService 是中提供的預設名稱 <a href="https://mysupport.net
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>下載 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Azure 的連接器部署原則"</a>。</p>
-<div class="admonitionblock tip">
+<p>複製Azure中新自訂角色所需的權限、並將其儲存在Json檔案中。</p>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<img src="/us-en/cloud-manager-setup-admin/images/tip.svg" alt="提示">
+<img src="/us-en/cloud-manager-setup-admin/images/note.svg" alt="附註">
 </td>
 <td class="content">
-在連結上按一下滑鼠右鍵、然後按一下「 * 另存連結為 &#8230;&#8203; * 」下載檔案。
+此原則僅包含從Cloud Manager在Azure中啟動Connector VM所需的權限。請勿在其他情況下使用此原則。Cloud Manager建立Connector時、會套用新的一組權限至Connector VM、讓Connector能夠管理公有雲環境中的資源。
 </td>
 </tr>
 </table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "Name": "Azure SetupAsService",
+    "Actions": [
+        "Microsoft.Compute/disks/delete",
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/locations/operations/read",
+        "Microsoft.Compute/operations/read",
+        "Microsoft.Compute/virtualMachines/instanceView/read",
+        "Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/write",
+        "Microsoft.Compute/virtualMachines/delete",
+        "Microsoft.Compute/virtualMachines/extensions/write",
+        "Microsoft.Compute/virtualMachines/extensions/read",
+        "Microsoft.Compute/availabilitySets/read",
+        "Microsoft.Network/locations/operationResults/read",
+        "Microsoft.Network/locations/operations/read",
+        "Microsoft.Network/networkInterfaces/join/action",
+        "Microsoft.Network/networkInterfaces/read",
+        "Microsoft.Network/networkInterfaces/write",
+        "Microsoft.Network/networkInterfaces/delete",
+        "Microsoft.Network/networkSecurityGroups/join/action",
+        "Microsoft.Network/networkSecurityGroups/read",
+        "Microsoft.Network/networkSecurityGroups/write",
+        "Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+        "Microsoft.Network/virtualNetworks/subnets/read",
+        "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+        "Microsoft.Network/virtualNetworks/virtualMachines/read",
+        "Microsoft.Network/publicIPAddresses/write",
+        "Microsoft.Network/publicIPAddresses/read",
+        "Microsoft.Network/publicIPAddresses/delete",
+        "Microsoft.Network/networkSecurityGroups/securityRules/read",
+        "Microsoft.Network/networkSecurityGroups/securityRules/write",
+        "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+        "Microsoft.Network/publicIPAddresses/join/action",
+        "Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read",
+        "Microsoft.Network/networkInterfaces/ipConfigurations/read",
+        "Microsoft.Resources/deployments/operations/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Resources/deployments/delete",
+        "Microsoft.Resources/deployments/cancel/action",
+        "Microsoft.Resources/deployments/validate/action",
+        "Microsoft.Resources/resources/read",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/delete",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/write",
+        "Microsoft.Authorization/roleDefinitions/write",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write",
+        "Microsoft.Network/networkSecurityGroups/delete",
+        "Microsoft.Storage/storageAccounts/delete",
+        "Microsoft.Storage/storageAccounts/write",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/deployments/operationStatuses/read",
+        "Microsoft.Authorization/roleAssignments/read"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Azure SetupAsService",
+    "IsCustom": "true"
+}</code></pre>
+</div>
 </div>
 </li>
 <li>
@@ -1588,7 +1720,7 @@ Azure Setup AsService 是中提供的預設名稱 <a href="https://mysupport.net
 <p>您所選擇的 Azure 區域中的 Vnet 和子網路。</p>
 </li>
 <li>
-<p>如果您不想讓Cloud Manager自動為Connector建立Azure角色、則必須自行建立 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.9.12.json" target="_blank" rel="noopener">"使用此原則"</a>。</p>
+<p>如果您不想讓Cloud Manager自動為Connector建立Azure角色、則必須自行建立 <a href="reference-permissions-azure.html">"使用此頁面上的原則"</a>。</p>
 <div class="paragraph">
 <p>這些權限適用於Connector執行個體本身。這是一組不同於您先前設定的權限、只要部署Connector即可。</p>
 </div>
@@ -1619,7 +1751,8 @@ Azure Setup AsService 是中提供的預設名稱 <a href="https://mysupport.net
 <ul>
 <li>
 <p><strong>準備就緒</strong>：按一下* Azure AD服務委託人*、然後輸入Azure Active Directory服務委託人的相關資訊、以授予必要的權限：</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>應用程式（用戶端） ID ：請參閱 <a href="#Get the application ID and directory ID">[Get the application ID and directory ID]</a>。</p>
 </li>
@@ -1629,11 +1762,14 @@ Azure Setup AsService 是中提供的預設名稱 <a href="https://mysupport.net
 <li>
 <p>用戶端機密：請參閱 <a href="#Create a client secret">[Create a client secret]</a>。</p>
 </li>
+</ul>
+</div>
+</li>
 <li>
 <p>* VM驗證*：選擇Azure訂閱、位置、新資源群組或現有資源群組、然後選擇驗證方法。</p>
 </li>
 <li>
-<p><strong>詳細資料</strong>：輸入執行個體的名稱、指定標記、然後選擇是否要Cloud Manager建立具有必要權限的新角色、或是要選取您設定的現有角色 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.9.12.json" target="_blank" rel="noopener">"必要的權限"</a>。</p>
+<p><strong>詳細資料</strong>：輸入執行個體的名稱、指定標記、然後選擇是否要Cloud Manager建立具有必要權限的新角色、或是要選取您設定的現有角色 <a href="reference-permissions-azure.html">"必要的權限"</a>。</p>
 <div class="paragraph">
 <p>請注意、您可以選擇與此角色相關的訂閱。您選擇的每個訂閱都會提供Connector權限、讓他們在Cloud Volumes ONTAP 這些訂閱中部署功能。</p>
 </div>

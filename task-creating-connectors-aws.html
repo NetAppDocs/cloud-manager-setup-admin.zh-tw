@@ -699,6 +699,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -877,7 +879,9 @@
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 參考資料</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions.html">
+        權限摘要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
         Connector的AWS權限
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html">
         連接器的Azure權限
@@ -961,7 +965,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-07-13 19:43:59 +0000">07/13/2022</time>
     
   
 
@@ -971,25 +975,13 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>客戶管理員必須先部署 <em>Connector</em> 、才能使用大多數 Cloud Manager 功能。 <a href="concept-connectors.html">"瞭解何時需要連接器"</a>。Connector 可讓 Cloud Manager 管理公有雲環境中的資源與程序。</p>
+<p>客戶管理員必須先部署 <em>Connector</em> 、才能使用大多數 Cloud Manager 功能。Connector 可讓 Cloud Manager 管理公有雲環境中的資源與程序。 <a href="concept-connectors.html">"瞭解何時需要連接器"</a>。</p>
 </div>
 <div class="paragraph">
 <p>本頁說明如何直接從 Cloud Manager 在 AWS 中建立 Connector 。 <a href="concept-connectors.html#how-to-create-a-connector">"瞭解部署Connector的其他方法"</a>。</p>
 </div>
 <div class="paragraph">
 <p>這些步驟必須由具有「帳戶管理」角色的使用者完成。工作區管理員無法建立 Connector 。</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/cloud-manager-setup-admin/images/tip.svg" alt="提示">
-</td>
-<td class="content">
-當您建立第一個 Cloud Volumes ONTAP 運作環境時、如果您還沒有 Cloud Manager 、 Cloud Manager 會提示您建立 Connector 。
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -1002,15 +994,124 @@
 <div class="ulist">
 <ul>
 <li>
-<p>讓Cloud Manager承擔IAM角色</p>
+<p>讓Cloud Manager承擔具備所需權限的IAM角色</p>
 </li>
 <li>
-<p>為IAM使用者提供AWS存取金鑰和秘密金鑰</p>
+<p>為具有所需權限的IAM使用者提供AWS存取金鑰和秘密金鑰</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>您使用的驗證方法必須具有必要的權限、才能在AWS中部署Connector執行個體。</p>
+<p>無論使用哪一個選項、您都必須先建立包含所需權限的IAM原則。</p>
+</div>
+<div class="sect2">
+<h3 id="建立iam原則">建立IAM原則</h3>
+<div class="paragraph">
+<p>此原則僅包含從Cloud Manager在AWS中啟動Connector執行個體所需的權限。請勿在其他情況下使用此原則。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Manager建立Connector時、會套用一組新的權限至Connector執行個體、讓Connector能夠管理公有雲環境中的資源。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>前往AWS IAM主控台。</p>
+</li>
+<li>
+<p>按一下*原則&gt;建立原則*。</p>
+</li>
+<li>
+<p>按一下「* JSON*」。</p>
+</li>
+<li>
+<p>複製並貼上下列原則：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "Version": "2012-10-17",
+    "Statement": [{
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:PutRolePolicy",
+                "iam:CreateInstanceProfile",
+                "iam:DeleteRolePolicy",
+                "iam:AddRoleToInstanceProfile",
+                "iam:RemoveRoleFromInstanceProfile",
+                "iam:DeleteInstanceProfile",
+                "iam:PassRole",
+                "ec2:DescribeInstanceStatus",
+                "ec2:RunInstances",
+                "ec2:ModifyInstanceAttribute",
+                "ec2:CreateSecurityGroup",
+                "ec2:DeleteSecurityGroup",
+                "ec2:DescribeSecurityGroups",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:CreateNetworkInterface",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DeleteNetworkInterface",
+                "ec2:ModifyNetworkInterfaceAttribute",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeDhcpOptions",
+                "ec2:DescribeKeyPairs",
+                "ec2:DescribeRegions",
+                "ec2:DescribeInstances",
+                "ec2:CreateTags",
+                "ec2:DescribeImages",
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:ValidateTemplate",
+                "ec2:AssociateIamInstanceProfile",
+                "ec2:DescribeIamInstanceProfileAssociations",
+                "ec2:DisassociateIamInstanceProfile",
+                "iam:GetRole",
+                "iam:TagRole",
+                "iam:ListRoles",
+                "kms:ListAliases"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:TerminateInstances"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "ec2:ResourceTag/OCCMInstance": "*"
+                }
+            },
+            "Resource": [
+                "arn:aws:ec2:*:*:instance/*"
+            ]
+        }
+    ]
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>如有需要、請按* Next*並新增標記。</p>
+</li>
+<li>
+<p>單擊*下一步*並輸入名稱和說明。</p>
+</li>
+<li>
+<p>按一下「<strong>建立原則</strong>」。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>將原則附加至Cloud Manager可以承擔的IAM角色、或附加至IAM使用者。</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="設定iam角色">設定IAM角色</h3>
@@ -1020,12 +1121,6 @@
 <div class="olist arabic">
 <div class="title">步驟</div>
 <ol class="arabic">
-<li>
-<p>請從下載Connector IAM原則 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager 原則頁面"</a>。</p>
-<div class="paragraph">
-<p>此原則包含在AWS中建立Connector所需的權限。Cloud Manager建立Connector時、會將一組新的權限套用至Connector執行個體。</p>
-</div>
-</li>
 <li>
 <p>前往目標帳戶中的AWS IAM主控台。</p>
 </li>
@@ -1043,13 +1138,13 @@
 <p>選取*其他AWS帳戶*、然後輸入Cloud Manager SaaS帳戶的ID：952013314444.</p>
 </li>
 <li>
-<p>建立包含先前下載之Connector IAM原則所示權限的原則。</p>
+<p>選取您在上一節中建立的原則。</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>複製IAM角色的角色ARN、以便在建立Connector時將其貼到Cloud Manager中。</p>
+<p>建立角色之後、請複製角色ARN、以便在建立Connector時將其貼到Cloud Manager中。</p>
 </li>
 </ol>
 </div>
@@ -1066,16 +1161,16 @@
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>請從下載Connector部署原則 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager 原則頁面"</a>。</p>
-<div class="paragraph">
-<p>此IAM原則包含在AWS中建立Connector所需的權限。Cloud Manager建立Connector時、會將一組新的權限套用至Connector執行個體。</p>
-</div>
+<p>從AWS IAM主控台按一下*使用者*、然後選取使用者名稱。</p>
 </li>
 <li>
-<p>從 AWS IAM 主控台複製並貼上 Connector IAM 原則中的文字、以建立您自己的原則。</p>
+<p>按一下*「新增權限」&gt;「直接附加現有原則」*。</p>
 </li>
 <li>
-<p>將您在上一步建立的原則附加到 IAM 使用者、 IAM 使用者將從 Cloud Manager 建立 Connector 。</p>
+<p>選取您建立的原則。</p>
+</li>
+<li>
+<p>按一下「<strong>下一步</strong>」、然後按一下「<strong>新增權限</strong>」。</p>
 </li>
 <li>
 <p>確保您有權存取IAM使用者的存取金鑰和秘密金鑰。</p>
@@ -1104,7 +1199,7 @@
 <p>您選擇的 AWS 區域中的 VPC 、子網路和金鑰組。</p>
 </li>
 <li>
-<p>如果您不想讓Cloud Manager自動為Connector建立IAM角色、則必須自行建立 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.9.13.json" target="_blank" rel="noopener">"使用此原則"</a>。</p>
+<p>如果您不想讓Cloud Manager自動為Connector建立IAM角色、則必須自行建立 <a href="reference-permissions-aws.html">"使用此頁面上的原則"</a>。</p>
 <div class="paragraph">
 <p>這些是Connector管理公有雲環境中資源所需的權限。這是一組不同於您所提供的建立Connector執行個體的權限。</p>
 </div>
@@ -1162,7 +1257,7 @@
 <p>新增自訂標記（中繼資料）至執行個體。</p>
 </li>
 <li>
-<p>選擇您要Cloud Manager建立具有所需權限的新角色、或是要選取您所設定的現有角色 <a href="https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.9.13.json" target="_blank" rel="noopener">"必要的權限"</a>。</p>
+<p>選擇您要Cloud Manager建立具有所需權限的新角色、或是要選取您所設定的現有角色 <a href="reference-permissions-aws.html">"必要的權限"</a>。</p>
 </li>
 <li>
 <p>選擇是否要加密Connector的EBS磁碟。您可以選擇使用預設加密金鑰或使用自訂金鑰。</p>

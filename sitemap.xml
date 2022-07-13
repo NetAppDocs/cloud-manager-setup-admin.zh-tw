@@ -15,14 +15,14 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-accounts-aws.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-accounts-azure.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
@@ -36,7 +36,7 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/concept-connectors.html</loc>
       
-      <lastmod>2022-07-03T15:55:23+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
@@ -99,21 +99,28 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html</loc>
       
-      <lastmod>2022-07-03T15:55:23+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-gcp.html</loc>
       
-      <lastmod>2022-06-07T20:53:08+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions.html</loc>
+      
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
@@ -134,21 +141,21 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin//search.html</loc>
       
-      <lastmod>2022-07-13T19:27:54+00:00</lastmod>
+      <lastmod>2022-07-13T19:44:20+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-adding-aws-accounts.html</loc>
       
-      <lastmod>2022-07-03T15:55:23+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-adding-azure-accounts.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
@@ -176,21 +183,21 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-aws.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-azure.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-gcp.html</loc>
       
-      <lastmod>2022-05-09T14:23:16+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
@@ -211,7 +218,7 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html</loc>
       
-      <lastmod>2022-06-15T15:29:00+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
@@ -225,21 +232,21 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-installing-linux.html</loc>
       
-      <lastmod>2022-06-15T15:29:00+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-aws-mktp.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-azure-mktp.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   
@@ -302,7 +309,7 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/whats-new.html</loc>
       
-      <lastmod>2022-07-13T15:38:35+00:00</lastmod>
+      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
       
     </url>
   

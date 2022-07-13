@@ -699,6 +699,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -877,7 +879,9 @@
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 參考資料</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions.html">
+        權限摘要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
         Connector的AWS權限
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html">
         連接器的Azure權限
@@ -961,7 +965,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-07-13 19:43:59 +0000">07/13/2022</time>
     
   
 
@@ -975,17 +979,11 @@
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>為 EC2 執行個體建立 IAM 原則和角色：</p>
+<p>在AWS中設定權限：</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>請從下列位置下載 Cloud Manager IAM 原則：</p>
-<div class="paragraph">
-<p><a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"NetApp Cloud Manager ： AWS 、 Azure 和 GCP 原則"</a></p>
-</div>
-</li>
-<li>
-<p>從 IAM 主控台複製並貼上 Cloud Manager IAM 原則中的文字、以建立您自己的原則。</p>
+<p>從IAM主控台複製並貼上的內容、以建立您自己的原則 <a href="reference-permissions-aws.html">"連接器的IAM原則"</a>。</p>
 </li>
 <li>
 <p>建立角色類型為 Amazon EC2 的 IAM 角色、並將您在上一步建立的原則附加至角色。</p>

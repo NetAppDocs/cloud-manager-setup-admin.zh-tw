@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head class="at-element-marker">
-  <title>Azure中Connector的必要權限 | NetApp Documentation</title>
+  <title>連接器的Azure權限 | NetApp Documentation</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Azure中Connector的必要權限 | NetApp Documentation" />
+  <meta property="og:title" content="連接器的Azure權限 | NetApp Documentation" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html" />
-	<meta property="og:description" content="Cloud Manager 需要權限、才能在雲端供應商中執行動作。這些權限包含在 NetApp 提供的原則中。您可能想要瞭解 Cloud Manager 使用這些權限的功能。" />
+	<meta property="og:description" content="Cloud Manager在Azure中啟動Connector VM時、會將自訂角色附加至VM、讓Connector有權管理該Azure訂閱中的資源和程序。Connector會使用權限來撥打API呼叫數個Azure服務。" />
   <meta property="og:image" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Cloud Manager 需要權限、才能在雲端供應商中執行動作。這些權限包含在 NetApp 提供的原則中。您可能想要瞭解 Cloud Manager 使用這些權限的功能。">
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Cloud Manager在Azure中啟動Connector VM時、會將自訂角色附加至VM、讓Connector有權管理該Azure訂閱中的資源和程序。Connector會使用權限來撥打API呼叫數個Azure服務。">
   <meta name="keywords" content=" permissions, azure, azure permissions"><!-- Icons -->
   <link rel="icon" href="/zh-tw/cloud-manager-setup-admin/images/favicon.ico" type="image/x-icon">
 
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/issues/new?body=Page%3A%20[Azure中Connector的必要權限](https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/discuss-sm.svg" alt="" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/blob/main/reference-permissions-azure.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/edit-sm.svg" alt="" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/cloud-manager-setup-admin/images/article-sm.svg" alt="" class="github-icon" />瞭解如何作出貢獻</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/issues/new?body=Page%3A%20[連接器的Azure權限](https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/discuss-sm.svg" alt="" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/blob/main/reference-permissions-azure.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/edit-sm.svg" alt="" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/cloud-manager-setup-admin/images/article-sm.svg" alt="" class="github-icon" />瞭解如何作出貢獻</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">在此頁面上</div>
@@ -693,6 +693,8 @@
           
 
 
+
+
     <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
   
 
@@ -877,7 +879,9 @@
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 參考資料</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions.html">
+        權限摘要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
         Connector的AWS權限
       </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html">
         連接器的Azure權限
@@ -954,26 +958,173 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Azure中Connector的必要權限</h1>
+  <h1 class="n-doc__component-detail-heading">連接器的Azure權限</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-07-13 19:43:59 +0000">07/13/2022</time>
     
   
 
 
 </p>
 
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph lead">
-<p>Cloud Manager 需要權限、才能在雲端供應商中執行動作。這些權限包含在中 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"NetApp 提供的原則"</a>。您可能想要瞭解 Cloud Manager 使用這些權限的功能。</p>
+<p>Cloud Manager在Azure中啟動Connector VM時、會將自訂角色附加至VM、讓Connector有權管理該Azure訂閱中的資源和程序。Connector會使用權限來撥打API呼叫數個Azure服務。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="自訂角色權限">自訂角色權限</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>下列自訂角色提供Connector管理Azure網路中資源與程序所需的權限。</p>
 </div>
 <div class="paragraph">
-<p>Cloud Manager Azure 原則包含 Cloud Manager 在 Cloud Volumes ONTAP Azure 中部署及管理功能所需的權限。</p>
+<p>直接從Cloud Manager建立Connector時、Cloud Manager會自動將此自訂角色套用至Connector。</p>
 </div>
+<div class="paragraph">
+<p>如果您從Azure Marketplace部署Connector、或是在Linux主機上手動安裝Connector、則必須自行設定自訂角色。</p>
+</div>
+<div class="paragraph">
+<p>您也必須確保在後續版本中新增權限時、該角色是最新的。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "Name": "Cloud Manager Operator",
+    "Actions": [
+       "Microsoft.Compute/disks/delete",
+                        "Microsoft.Compute/disks/read",
+                        "Microsoft.Compute/disks/write",
+                        "Microsoft.Compute/locations/operations/read",
+                        "Microsoft.Compute/locations/vmSizes/read",
+                        "Microsoft.Resources/subscriptions/locations/read",
+                        "Microsoft.Compute/operations/read",
+                        "Microsoft.Compute/virtualMachines/instanceView/read",
+                        "Microsoft.Compute/virtualMachines/powerOff/action",
+                        "Microsoft.Compute/virtualMachines/read",
+                        "Microsoft.Compute/virtualMachines/restart/action",
+                        "Microsoft.Compute/virtualMachines/deallocate/action",
+                        "Microsoft.Compute/virtualMachines/start/action",
+                        "Microsoft.Compute/virtualMachines/vmSizes/read",
+                        "Microsoft.Compute/virtualMachines/write",
+                        "Microsoft.Compute/images/write",
+                        "Microsoft.Compute/images/read",
+                        "Microsoft.Network/locations/operationResults/read",
+                        "Microsoft.Network/locations/operations/read",
+                        "Microsoft.Network/networkInterfaces/read",
+                        "Microsoft.Network/networkInterfaces/write",
+                        "Microsoft.Network/networkInterfaces/join/action",
+                        "Microsoft.Network/networkSecurityGroups/read",
+                        "Microsoft.Network/networkSecurityGroups/write",
+                        "Microsoft.Network/networkSecurityGroups/join/action",
+                        "Microsoft.Network/virtualNetworks/read",
+                        "Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read",
+                        "Microsoft.Network/virtualNetworks/subnets/read",
+                        "Microsoft.Network/virtualNetworks/subnets/write",
+                        "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+                        "Microsoft.Network/virtualNetworks/virtualMachines/read",
+                        "Microsoft.Network/virtualNetworks/subnets/join/action",
+                        "Microsoft.Resources/deployments/operations/read",
+                        "Microsoft.Resources/deployments/read",
+                        "Microsoft.Resources/deployments/write",
+                        "Microsoft.Resources/resources/read",
+                        "Microsoft.Resources/subscriptions/operationresults/read",
+                        "Microsoft.Resources/subscriptions/resourceGroups/delete",
+                        "Microsoft.Resources/subscriptions/resourceGroups/read",
+                        "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+                        "Microsoft.Resources/subscriptions/resourceGroups/write",
+                        "Microsoft.Storage/checknameavailability/read",
+                        "Microsoft.Storage/operations/read",
+                        "Microsoft.Storage/storageAccounts/listkeys/action",
+                        "Microsoft.Storage/storageAccounts/read",
+                        "Microsoft.Storage/storageAccounts/delete",
+                        "Microsoft.Storage/storageAccounts/regeneratekey/action",
+                        "Microsoft.Storage/storageAccounts/write",
+                        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+                        "Microsoft.Storage/usages/read",
+                        "Microsoft.Compute/snapshots/write",
+                        "Microsoft.Compute/snapshots/read",
+                        "Microsoft.Compute/availabilitySets/write",
+                        "Microsoft.Compute/availabilitySets/read",
+                        "Microsoft.Compute/disks/beginGetAccess/action",
+                        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read",
+                        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write",
+                        "Microsoft.Network/loadBalancers/read",
+                        "Microsoft.Network/loadBalancers/write",
+                        "Microsoft.Network/loadBalancers/delete",
+                        "Microsoft.Network/loadBalancers/backendAddressPools/read",
+                        "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+                        "Microsoft.Network/loadBalancers/frontendIPConfigurations/read",
+                        "Microsoft.Network/loadBalancers/loadBalancingRules/read",
+                        "Microsoft.Network/loadBalancers/probes/read",
+                        "Microsoft.Network/loadBalancers/probes/join/action",
+                        "Microsoft.Authorization/locks/*",
+                        "Microsoft.Network/routeTables/join/action",
+                        "Microsoft.NetApp/netAppAccounts/read",
+                        "Microsoft.NetApp/netAppAccounts/capacityPools/read",
+                        "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write",
+                        "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read",
+                        "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete",
+                        "Microsoft.Network/privateEndpoints/write",
+                        "Microsoft.Storage/storageAccounts/PrivateEndpointConnectionsApproval/action",
+                        "Microsoft.Storage/storageAccounts/privateEndpointConnections/read",
+                        "Microsoft.Storage/storageAccounts/managementPolicies/read",
+                        "Microsoft.Storage/storageAccounts/managementPolicies/write",
+                        "Microsoft.Network/privateEndpoints/read",
+                        "Microsoft.Network/privateDnsZones/write",
+                        "Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
+                        "Microsoft.Network/virtualNetworks/join/action",
+                        "Microsoft.Network/privateDnsZones/A/write",
+                        "Microsoft.Network/privateDnsZones/read",
+                        "Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
+                        "Microsoft.Resources/deployments/operationStatuses/read",
+                        "Microsoft.Insights/Metrics/Read",
+                        "Microsoft.Compute/virtualMachines/extensions/write",
+                        "Microsoft.Compute/virtualMachines/extensions/delete",
+                        "Microsoft.Compute/virtualMachines/extensions/read",
+                        "Microsoft.Compute/virtualMachines/delete",
+                        "Microsoft.Network/networkInterfaces/delete",
+                        "Microsoft.Network/networkSecurityGroups/delete",
+                        "Microsoft.Resources/deployments/delete",
+                        "Microsoft.Compute/diskEncryptionSets/read",
+                        "Microsoft.Compute/snapshots/delete",
+                        "Microsoft.Network/privateEndpoints/delete",
+                        "Microsoft.Compute/availabilitySets/delete",
+                        "Microsoft.Network/loadBalancers/delete",
+                        "Microsoft.KeyVault/vaults/read",
+                        "Microsoft.KeyVault/vaults/accessPolicies/write",
+                        "Microsoft.Compute/diskEncryptionSets/write",
+                        "Microsoft.KeyVault/vaults/deploy/action",
+                        "Microsoft.Compute/diskEncryptionSets/delete",
+                        "Microsoft.Resources/tags/read",
+                        "Microsoft.Resources/tags/write",
+                        "Microsoft.Resources/tags/delete",
+                        "Microsoft.Network/applicationSecurityGroups/write",
+                        "Microsoft.Network/applicationSecurityGroups/read",
+                        "Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action",
+                        "Microsoft.Network/networkSecurityGroups/securityRules/write",
+                        "Microsoft.Network/applicationSecurityGroups/delete",
+                        "Microsoft.Network/networkSecurityGroups/securityRules/delete"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Cloud Manager Permissions",
+    "IsCustom": "true"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="azure權限的使用方式">Azure權限的使用方式</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1084,6 +1235,8 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
     </article>
     <!-- Page Container -->

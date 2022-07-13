@@ -699,6 +699,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -877,7 +879,9 @@
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 參考資料</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions.html">
+        權限摘要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
         Connector的AWS權限
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html">
         連接器的Azure權限
@@ -961,7 +965,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:07:01 +0000">05/03/2022</time>
+    <time datetime="2022-07-13 19:43:59 +0000">07/13/2022</time>
     
   
 
@@ -1079,11 +1083,11 @@
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>使用 Cloud Manager 原則建立自訂角色：</p>
+<p>建立自訂角色：</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>下載 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager Azure 原則"</a>。</p>
+<p>複製的內容 <a href="reference-permissions-azure.html">"Connector的自訂角色權限"</a> 並將它們儲存在Json檔案中。</p>
 </li>
 <li>
 <p>將 Azure 訂閱 ID 新增至可指派的範圍、以修改 Json 檔案。</p>
@@ -1097,23 +1101,46 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>「 AssignableScopes 」： [ 「 /unorder/d333af45-0d07-4154-943d-c25fbzzzz 」、「 /unorder/54b91999-b3e6-4599-908e-416e0zzzz 」、「 /unuses/398e471c-3bzzz-4bez-4bez-4bez-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bz-4bez-</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+"/subscriptions/54b91999-b3e6-4599-908e-416e0zzzzzzz",
+"/subscriptions/398e471c-3b42-4ae7-9b59-ce5bbzzzzzzz"</code></pre>
+</div>
 </div>
 </li>
 <li>
 <p>使用 Json 檔案在 Azure 中建立自訂角色。</p>
 <div class="paragraph">
-<p>下列範例說明如何使用 Azure CLI 2.0 建立自訂角色：</p>
+<p>下列步驟說明如何在Azure Cloud Shell中使用Bash建立角色。</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>開始 <a href="https://docs.microsoft.com/en-us/azure/cloud-shell/overview" target="_blank" rel="noopener">"Azure Cloud Shell"</a> 並選擇Bash環境。</p>
+</li>
+<li>
+<p>上傳Json檔案。</p>
 <div class="paragraph">
-<p>「AZ角色定義建立-角色定義C：\Policy_for_Cloud Manager、Azure _3.9.8.json」</p>
+<p><span class="image"><img src="./media/screenshot_azure_shell_upload.png" alt="Azure Cloud Shell的快照、您可在其中選擇上傳檔案的選項。"></span></p>
 </div>
 </li>
-</ol>
+<li>
+<p>輸入下列Azure CLI命令：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-azurecli" data-lang="azurecli">az role definition create --role-definition Policy_for_Setup_As_Service_Azure.json</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>您現在應該擁有名為 Cloud Manager 的自訂角色、可以指派給 Connector 虛擬機器。</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
@@ -1135,7 +1162,7 @@
 <img src="/us-en/cloud-manager-setup-admin/images/note.svg" alt="附註">
 </td>
 <td class="content">
-Cloud Manager 運算子是中提供的預設名稱 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies">"Cloud Manager 原則"</a>。如果您為角色選擇不同的名稱、請改為選取該名稱。
+Cloud Manager操作員是Cloud Manager原則中提供的預設名稱。如果您為角色選擇不同的名稱、請改為選取該名稱。
 </td>
 </tr>
 </table>

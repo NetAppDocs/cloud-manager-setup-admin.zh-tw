@@ -699,6 +699,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -877,7 +879,9 @@
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 參考資料</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions.html">
+        權限摘要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-aws.html">
         Connector的AWS權限
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/reference-permissions-azure.html">
         連接器的Azure權限
@@ -961,7 +965,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-07-03 15:55:23 +0000">07/03/2022</time>
+    <time datetime="2022-07-13 19:43:59 +0000">07/13/2022</time>
     
   
 
@@ -1080,7 +1084,7 @@
 <p>選取*其他AWS帳戶*、然後輸入連接器執行個體所在帳戶的ID。</p>
 </li>
 <li>
-<p>使用Cloud Manager IAM原則建立原則、可從取得 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager 原則頁面"</a>。</p>
+<p>透過複製及貼上的內容來建立原則 <a href="reference-permissions-aws.html">"連接器的IAM原則"</a>。</p>
 </li>
 </ul>
 </div>
@@ -1103,10 +1107,7 @@
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>請從下載 Cloud Manager IAM 原則 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager 原則頁面"</a>。</p>
-</li>
-<li>
-<p>從 IAM 主控台複製並貼上 Cloud Manager IAM 原則中的文字、以建立您自己的原則。</p>
+<p>從IAM主控台複製並貼上的內容、以建立原則 <a href="reference-permissions-aws.html">"連接器的IAM原則"</a>。</p>
 <div class="paragraph">
 <p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html" target="_blank" rel="noopener">"AWS 文件：建立 IAM 原則"</a></p>
 </div>
@@ -1216,8 +1217,15 @@
 </li>
 <li>
 <p>建立包含建立Connector所需權限的原則。</p>
-<div class="paragraph">
-<p>從檢視Connector部署原則 <a href="https://mysupport.netapp.com/site/info/cloud-manager-policies" target="_blank" rel="noopener">"Cloud Manager 原則頁面"</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/requirements/task-setting-up-permissions-fsx.html" target="_blank" rel="noopener">"檢視FSXfor ONTAP Sfor Sf哪些 權限"</a></p>
+</li>
+<li>
+<p><a href="task-creating-connectors-aws.html#create-an-iam-policy">"檢視Connector部署原則"</a></p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
