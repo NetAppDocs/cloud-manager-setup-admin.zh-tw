@@ -141,7 +141,7 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin//search.html</loc>
       
-      <lastmod>2022-07-13T20:04:39+00:00</lastmod>
+      <lastmod>2022-07-15T17:02:31+00:00</lastmod>
       
     </url>
   
@@ -183,21 +183,21 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-aws.html</loc>
       
-      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-azure.html</loc>
       
-      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-creating-connectors-gcp.html</loc>
       
-      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
       
     </url>
   
@@ -239,14 +239,14 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-aws-mktp.html</loc>
       
-      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
       
     </url>
   
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-launching-azure-mktp.html</loc>
       
-      <lastmod>2022-07-13T19:43:59+00:00</lastmod>
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
       
     </url>
   
@@ -302,7 +302,21 @@
     <url>
       <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-viewing-amazon-s3.html</loc>
       
-      <lastmod>2022-05-03T06:07:01+00:00</lastmod>
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-viewing-azure-blob.html</loc>
+      
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-viewing-gcp-storage.html</loc>
+      
+      <lastmod>2022-07-15T17:02:13+00:00</lastmod>
       
     </url>
   

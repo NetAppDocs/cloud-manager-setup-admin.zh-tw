@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head class="at-element-marker">
-  <title>Search results | NetApp Documentation</title>
+  <title>檢視您的Google Cloud Storage儲存桶 | NetApp Documentation</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Search results | NetApp Documentation" />
+  <meta property="og:title" content="檢視您的Google Cloud Storage儲存桶 | NetApp Documentation" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/search.html" />
-	<meta property="og:description" content="" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-viewing-gcp-storage.html" />
+	<meta property="og:description" content="在Google Cloud中安裝Connector之後、Cloud Manager可以自動探索有關Google Cloud儲存區的資訊、這些儲存區位於安裝Connector的Google帳戶中。此時會將Google Cloud Storage工作環境新增至CanvasTM、以便您檢視此資訊。" />
   <meta property="og:image" content="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="">
-  <meta name="keywords" content=" "><meta name="translate" content="false"/><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="在Google Cloud中安裝Connector之後、Cloud Manager可以自動探索有關Google Cloud儲存區的資訊、這些儲存區位於安裝Connector的Google帳戶中。此時會將Google Cloud Storage工作環境新增至CanvasTM、以便您檢視此資訊。">
+  <meta name="keywords" content=" google cloud storage buckets, google cloud storage, google cloud storage working environment"><!-- Icons -->
   <link rel="icon" href="/zh-tw/cloud-manager-setup-admin/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/zh-tw/cloud-manager-setup-admin/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -94,7 +94,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
   <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/prism.css' type='text/css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/cloud-manager-setup-admin/js/na-search.js'></script><script src='/zh-tw/cloud-manager-setup-admin/js/na-pagenav.js'></script><link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/prism.css' type='text/css'>
   <link rel='stylesheet' href='/zh-tw/cloud-manager-setup-admin/css/prism-netapp.css' type='text/css'>
 
 
@@ -166,6 +166,20 @@
       <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
       <div class="n-off-canvas-menu__content-wrap">
         <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/issues/new?body=Page%3A%20[檢視您的Google Cloud Storage儲存桶](https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-viewing-gcp-storage.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/discuss-sm.svg" alt="" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-setup-admin/blob/main/task-viewing-gcp-storage.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/cloud-manager-setup-admin/images/edit-sm.svg" alt="" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/cloud-manager-setup-admin/images/article-sm.svg" alt="" class="github-icon" />瞭解如何作出貢獻</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此頁面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
   
   <!-- Start top_hat -->
   <div class="n-top-hat">
@@ -239,6 +253,29 @@
       </div>
 
       
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-tw/cloud-manager-setup-admin/search.html"
+          data-type="widget" 
+          data-placeholder="搜尋文件"
+          data-no-results-found="找不到符合 {query} 的相關結果。"
+          data-did-you-mean="搜尋 {suggestion}。"
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？"
+          data-results-found="找到 {hitCount} 筆結果"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
     </div>
   </div>
   <div class="n-property-bar__toolbar">
@@ -253,15 +290,15 @@
       </div>
 
       <ul class="custom-dropdown-menu"><li>
-          <a href="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin//search.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+          <a href="https://docs.netapp.com/zh-tw/cloud-manager-setup-admin/task-viewing-gcp-storage.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin//search.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+          <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-viewing-gcp-storage.html" target="_self"><span translate="no" class="notranslate">English</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ja-jp/cloud-manager-setup-admin//search.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+          <a href="https://docs.netapp.com/ja-jp/cloud-manager-setup-admin/task-viewing-gcp-storage.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-cn/cloud-manager-setup-admin//search.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+          <a href="https://docs.netapp.com/zh-cn/cloud-manager-setup-admin/task-viewing-gcp-storage.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ko-kr/cloud-manager-setup-admin//search.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+          <a href="https://docs.netapp.com/ko-kr/cloud-manager-setup-admin/task-viewing-gcp-storage.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
         </li></ul>
     </div><!-- End Language Selector -->
 
@@ -568,6 +605,8 @@
 
 
 
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
 
 
         </li>
@@ -850,7 +889,7 @@
         檢視您的Amazon S3儲存庫
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-viewing-azure-blob.html">
         檢視您的Azure Blob帳戶
-      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-viewing-gcp-storage.html">
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/cloud-manager-setup-admin/task-viewing-gcp-storage.html">
         檢視您的Google Cloud Storage儲存桶
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> AWS認證資料</div>
@@ -957,31 +996,58 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Search results</h1>
+  <h1 class="n-doc__component-detail-heading">檢視您的Google Cloud Storage儲存桶</h1>
 </div>
 
 
-<div id="search-demo-container" class="n-property-bar__search">
-  <div id="react-search" 
-  data-search-html="/zh-tw/cloud-manager-setup-admin/search.html"
-  data-type="page" 
-  data-placeholder="搜尋文件" 
-  data-no-results-found="找不到符合 {query} 的相關結果。" 
-  data-did-you-mean="搜尋 {suggestion}。" 
-  data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？" 
-  data-results-found="找到 {hitCount} 筆結果"
-  data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
-  data-error-reset="Reset Search"
-  data-sk-es-pf-indexes=""
-  data-flavor=""></div>
-  <button class="search-all-icon n-property-bar__search-toggle-button" type="button">
-    <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
-      <title>search</title>
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/cloud-manager-setup-admin/common/svg/sprite.svg#search"></use>
-    </svg>
-  </button>
-</div>
+<p class="page-details">
+  
+    
+    <time datetime="2022-07-15 17:02:13 +0000">07/15/2022</time>
+    
+  
 
+
+</p>
+
+<div class="paragraph lead">
+<p>在Google Cloud中安裝Connector之後、Cloud Manager可以自動探索Google Cloud Storage儲存桶的相關資訊、這些儲存桶位於安裝Connector的Google帳戶中。此時會將Google Cloud Storage工作環境新增至CanvasTM、以便您檢視此資訊。</p>
+</div>
+<div class="paragraph">
+<p>您可以查看Google Cloud Storage儲存桶的詳細資料、包括位置、存取狀態、儲存設備類別、總容量和已用容量等。這些儲存庫可做為雲端備份、雲端分層或Cloud Sync 還原作業的目的地。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p><a href="task-creating-connectors-gcp.html">"安裝連接器"</a> 在您想要檢視Google Cloud Storage儲存桶的Google帳戶中。</p>
+<div class="paragraph">
+<p>不久之後、您應該會自動看到Google Cloud Storage工作環境。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-gcp-cloud-storage-we.png" alt="Google Cloud Storage工作環境的快照。"></span></p>
+</div>
+</li>
+<li>
+<p>按一下工作環境、然後從右窗格中選取一個動作。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-gcp-cloud-storage-actions.png" alt="在您選取Google Cloud Storage工作環境之後、會顯示「行動」窗格的快照。窗格會顯示使用同步服務的總儲存格數和動作。"></span></p>
+</div>
+</li>
+<li>
+<p>按一下*同步資料*、即可將資料同步至Google Cloud Storage儲存桶或從中同步。</p>
+<div class="paragraph">
+<p>如需詳細資料、請參閱 <a href="https://docs.netapp.com/us-en/cloud-manager-sync/concept-cloud-sync.html" target="_blank" rel="noopener">"關於此服務的總覽Cloud Sync"</a>。</p>
+</div>
+</li>
+<li>
+<p>按一下*輸入工作環境*、即可檢視Google帳戶中的庫存箱詳細資料。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-gcp-cloud-storage-details.png" alt="顯示Google Cloud Storage工作環境詳細資料的快照：儲存區總數、容量和位置、然後顯示每個儲存區詳細資料的表格。"></span></p>
+</div>
+</li>
+</ol>
+</div>
 
     </article>
     <!-- Page Container -->
@@ -1129,29 +1195,4 @@
     <script src='/zh-tw/cloud-manager-setup-admin/js/www-ntap.js'></script>
     <script src='/zh-tw/cloud-manager-setup-admin/js/tabbed-blocks.js'></script>
     <script src='/zh-tw/cloud-manager-setup-admin/js/sidebar.js'></script>
-  </body><script>
-    /*
-      if(hasParameter(window.location.search,'q')) {
-        var queryString = decodeURI(getParameter(window.location.search, 'q'));
-        document.getElementsByClassName("sk-search-box__text")[0].setAttribute("value", queryString);
-      }
-
-      function getParameter(searchString,param) {
-        var params = searchString.split('?&');
-        for(var i=0;i<params.length;i++) {
-          var paramIndex = params[i].indexOf(param+"=");
-          if(paramIndex != -1) {
-            return params[i].substring(paramIndex+param.length+1);
-          }
-        }
-
-        return "";
-      }
-
-      function hasParameter(searchString,param) {
-        searchString = searchString || "";
-        param = param || "";
-        return (searchString.indexOf("?"+param+"=") != -1 || searchString.indexOf("&"+param+"=") != -1);
-      }
-      */
-  </script></html>
+  </body></html>
